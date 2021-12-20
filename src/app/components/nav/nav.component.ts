@@ -1,4 +1,4 @@
-import { animate, state, style, transition, trigger } from '@angular/animations';
+import { animate, animateChild, query, state, style, transition, trigger } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import { UrlParamsService } from 'src/app/services/url-params.service';
 
@@ -11,10 +11,17 @@ import { UrlParamsService } from 'src/app/services/url-params.service';
     trigger('expandContract',[
       transition('* => *',[
         style({ height: '0px' }),
-        animate('0.8s ease-in')
+        animate('0.8s ease-in'),
+        query('@fadeIn',animateChild())
       ])
-      
     ]),
+      
+    trigger('fadeIn',[
+      transition('*=>*',[
+        style({ opacity: 0 }),
+        animate('1s ease-in')
+      ]),
+    ])
   ]
 })
 export class NavComponent implements OnInit {
