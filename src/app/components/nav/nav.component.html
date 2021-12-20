@@ -1,0 +1,17 @@
+<nav>
+    <div class="logo">Shopaholic</div>
+    <div class="menus">
+        <div>Home</div>
+        <div routerLink="/clothing" routerLinkActive="active" (click)="expander()">Clothing</div>
+        <div  routerLink="/electronics" routerLinkActive="active" (click)="expander()">Electronics</div>
+        <div routerLink="/jewelery" routerLinkActive="active" (click)="expander()">Jewellery</div>
+    </div>
+    <div>
+        <img src="/assets/icons/icon-cart.svg" alt="">
+    </div>
+</nav>
+<header [@expandContract]="expand?'expanded':'contracted'" >
+    <div>
+        <h2>{{categorySelected}}</h2>
+    </div>
+</header>

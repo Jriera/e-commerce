@@ -1,0 +1,39 @@
+
+
+<ng-container *ngIf="productList.length!=0">
+    <div class="product-list" *ngFor='let product of productList;let i = index'>
+        <!-- Since tags are generated dynamically, the odd styling is used with conditional ngClass -->
+        <section class="product" [ngClass]="{reversed:i%2!==0}">
+            <div class="img-wrapper">
+                <img src="{{product.image}}" alt="">
+            </div>
+            <div class="product-info">
+                <h3>{{product.title}}</h3>
+                <p>{{product.description}}</p>
+                <div class="detail-button">See Product</div>
+            </div>
+        </section>
+    </div>
+</ng-container>
+
+<section *ngIf="productList.length===0" class="loading-image"> <!-- It only shows when products is empty -->
+<!-- generated loader using online resources -->
+    <div class="loadingio-spinner-spinner-7lpuls74m78">
+        <div class="ldio-dcuowe6ogia">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+
+
+</section>
