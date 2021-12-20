@@ -9,7 +9,7 @@ import { UrlParamsService } from 'src/app/services/url-params.service';
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.scss'],
-}) //end of component decorator
+}) 
 export class ProductListComponent implements OnInit, OnDestroy {
   productList: Product[] = [];
   prductsSubscription = new Subscription();
