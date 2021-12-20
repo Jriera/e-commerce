@@ -12,6 +12,6 @@
 </nav>
 <header [@expandContract]="expand?'expanded':'contracted'" >
     <div>
-        <h2>{{categorySelected}}</h2>
+        <h2 [@fadeIn]="expand">{{categorySelected}}</h2>
     </div>
 </header>
