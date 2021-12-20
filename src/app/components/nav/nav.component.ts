@@ -1,6 +1,6 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { UrlParamsService } from 'src/app/services/url-params.service';
 
 
 @Component({
@@ -20,14 +20,18 @@ import { ActivatedRoute } from '@angular/router';
 export class NavComponent implements OnInit {
 
   expand: boolean = false;
-  categorySelected:string =''
-  constructor(private activatedRoute:ActivatedRoute) { }
+  categorySelected:string|null =''
+  constructor(private paramService:UrlParamsService) { }
 
   ngOnInit(): void {
     
   }
 
-  //following are the methods for route capture
+  getCategory(){
+    this.paramService.get().subscribe((params)=>{
+      this.categorySelected = params
+    })
+  }
  
 
 
