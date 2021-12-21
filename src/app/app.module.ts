@@ -12,6 +12,8 @@ import { ProductDetailComponent } from './components/product-detail/product-deta
 import { BasicNavComponent } from './components/basic-nav/basic-nav.component';
 import { CoreAnimationDirective } from './directives/gsap/core-animation.directive';
 import { FadeInDirective } from './directives/gsap/fade-in.directive';
+import { SlideDirective } from './directives/gsap/slide.directive';
+import { FallDirective } from './directives/gsap/fall.directive';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { FadeInDirective } from './directives/gsap/fade-in.directive';
     ProductDetailComponent,
     BasicNavComponent,
     CoreAnimationDirective,
-    FadeInDirective
+    FadeInDirective,
+    SlideDirective,
+    FallDirective
   ],
   imports: [
     BrowserModule,
