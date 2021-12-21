@@ -5,7 +5,7 @@
         <!-- Since tags are generated dynamically, the odd styling is used with conditional ngClass -->
         <section class="product" [ngClass]="{reversed:i%2!==0}">
             <div class="img-wrapper">
-                <img src="{{product.image}}" alt="">
+                <img src="/assets/images/{{product.id}}.png" alt="">
             </div>
             <div class="product-info">
                 <h3>{{product.title}}</h3>
