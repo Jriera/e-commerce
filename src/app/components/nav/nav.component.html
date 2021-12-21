@@ -1,7 +1,7 @@
 <nav>
     <div class="logo">Shopaholic</div>
     <div class="menus">
-        <div>Home</div>
+        <div routerLink="" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" (click)="getCategory()">Home</div>
         <div routerLink="/clothing" routerLinkActive="active" (click)="expander();getCategory()">Clothing</div>
         <div  routerLink="/electronics" routerLinkActive="active" (click)="expander();getCategory()">Electronics</div>
         <div routerLink="/jewelery" routerLinkActive="active" (click)="expander();getCategory()">Jewellery</div>
