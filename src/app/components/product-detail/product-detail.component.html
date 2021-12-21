@@ -1,1 +1,92 @@
-<p>product-detail works!</p>
+<div class="back" (click)="goBack()">
+    <div class="empty-box"></div> Go Back
+</div>
+<ng-container *ngIf="productDetail!==null">
+    <div class="product-detail">
+
+        <section class="product">
+            <div class="img-wrapper">
+                <img src="/assets/images/{{productDetail.id}}.png" alt="">
+            </div>
+            <div class="product-info">
+                <h3>{{productDetail.title}}</h3>
+                <p>{{productDetail.description}}</p>
+                <p class="price">€ {{productDetail.price}}</p>
+                <div class="detail-button">Add to Cart</div>
+            </div>
+        </section>
+        <section class="product-features">
+            <div class="features">
+                <h3>Features</h3>
+                <p>{{productDetail.description}}</p>
+            </div>
+            <!-- clothing contents -->
+            <div class="contents" *ngIf="productId<5||productId>14">
+                <h3>Included</h3>
+                <p><span class="quantity">1x</span>30 day refund</p>
+                <p><span class="quantity">1x</span>Coupon for next purchase</p>
+                <p><span class="quantity">1x</span>Courtesy gift</p>
+
+            </div>
+            <!-- jewelery contents -->
+            <div class="contents" *ngIf="productId>4&&productId<9">
+                <h3>Included</h3>
+                <p><span class="quantity">1x</span>Lifetime warranty</p>
+                <p><span class="quantity">1x</span>30 day refund</p>
+                <p><span class="quantity">1x</span>Customized box</p>
+                <p><span class="quantity">1x</span>Voucher for engraving</p>
+            </div>
+                <!-- electronics contents -->
+            <div class="contents" *ngIf="productId>8&&productId<15">
+                <h3>In the box</h3>
+                <p><span class="quantity">1x</span>2 year warranty</p>
+                <p><span class="quantity">1x</span>30 day refund</p>
+                <p><span class="quantity">1x</span>USB wires</p>
+                <p><span class="quantity">2x</span>International adapters</p>
+                <p><span class="quantity">1x</span>User Manual</p>
+            </div>
+        </section>
+    </div>
+    <section class="recommended">
+        <h3>You may also like</h3>
+        <div class="recommended-elements">
+            <ng-container *ngFor="let recommend of recommended">
+                <div class="element">
+                    <div class="img-wrapper">
+                        <img src="/assets/images/{{recommend.id}}.png" alt="">
+                    </div>
+                    <div class="text-wrapper">
+                        <p>{{recommend.title}}</p>
+                    </div>
+                    <div class="detail-button" routerLink="../{{recommend.id}}" (click)="getProductId()">See Product</div>
+                </div>
+            </ng-container>
+        </div>
+    </section>
+</ng-container>
+
+
+
+<!-- It only shows when products is empty -->
+<section *ngIf="productDetail===null" class="loading-image">
+    
+    <!-- generated loader using online resources -->
+    <div class="loadingio-spinner-spinner-7lpuls74m78">
+        <div class="ldio-dcuowe6ogia">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+
+
+</section>
