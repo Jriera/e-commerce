@@ -6,7 +6,7 @@ nav{
     }
 
     .menus{
-        @apply flex justify-center text-gray-300  text-sm uppercase font-bold ;
+        @apply flex justify-center text-gray-300  text-sm uppercase font-bold gap-10 ;
         div{
             @apply mr-4 hover:text-orange-500 transition duration-300 ease-in cursor-pointer;
         }
