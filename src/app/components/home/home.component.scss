@@ -1,8 +1,22 @@
 
+
 .hero{
-    @apply flex justify-evenly items-center bg-neutral-900;
+    @apply flex justify-between items-center bg-neutral-900 px-32;
+    .subtitle{
+        @apply text-neutral-400 uppercase text-sm font-body tracking-[11px] pb-6;
+    }
+    .title{
+        @apply text-neutral-100 text-6xl font-bold uppercase font-body ;
+        span{
+            @apply text-neutral-100 lowercase;
+        }
+    }
+
+    .description{
+        @apply text-neutral-400 text-sm font-body py-8 max-w-md;
+    }
     img{
-        @apply object-cover max-w-sm;
+        @apply object-cover max-w-lg ;
     }
     
 }
