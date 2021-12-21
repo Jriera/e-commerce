@@ -1,5 +1,6 @@
 <app-nav *ngIf="!isHomeRoute()"></app-nav> 
 <app-basic-nav *ngIf="isHomeRoute()" ></app-basic-nav>
-<div class="content" [@routeAnim]="prepareRoute(outlet)">
+<!-- <div class="content" [@routeAnim]="prepareRoute(outlet)">
     <router-outlet #outlet='outlet' ></router-outlet>
-</div>
+</div> -->
+<router-outlet></router-outlet>
