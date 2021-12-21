@@ -10,6 +10,8 @@ import { NavComponent } from './components/nav/nav.component';
 import { ProductListComponent } from './components/product-list/product-list.component';
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
 import { BasicNavComponent } from './components/basic-nav/basic-nav.component';
+import { CoreAnimationDirective } from './directives/gsap/core-animation.directive';
+import { FadeInDirective } from './directives/gsap/fade-in.directive';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { BasicNavComponent } from './components/basic-nav/basic-nav.component';
     NavComponent,
     ProductListComponent,
     ProductDetailComponent,
-    BasicNavComponent
+    BasicNavComponent,
+    CoreAnimationDirective,
+    FadeInDirective
   ],
   imports: [
     BrowserModule,
