@@ -15,7 +15,7 @@ export class FadeInDirective extends CoreAnimationDirective implements OnInit {
   }
 
   protected override animateIn() {
-    this.timeline.from(this.element.nativeElement,this.duration,{opacity:'0', ease:"Expo.easeInOut"}, this.delay);
+    this.timeline.from(this.element.nativeElement,this.duration,{opacity:'0', ease:"Expo.easeIn"}, this.delay);
     super.animateIn();
   }
 
