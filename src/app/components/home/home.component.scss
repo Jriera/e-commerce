@@ -1,0 +1,11 @@
+
+.hero{
+    @apply flex justify-evenly items-center bg-neutral-900;
+    img{
+        @apply object-cover max-w-sm;
+    }
+    
+}
+ .detail-button{
+    @apply  relative bg-orange-400  text-orange-50 font-bold py-4 px-6 max-w-fit uppercase text-sm cursor-pointer before:bg-white before:h-0 before:absolute before:w-full before:left-0 before:top-0 before:bg-opacity-20 hover:before:h-full before:transition-all before:duration-500 before:ease-in-out ;
+  }
