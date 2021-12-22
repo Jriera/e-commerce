@@ -14,6 +14,7 @@ import { CoreAnimationDirective } from './directives/gsap/core-animation.directi
 import { FadeInDirective } from './directives/gsap/fade-in.directive';
 import { SlideDirective } from './directives/gsap/slide.directive';
 import { FallDirective } from './directives/gsap/fall.directive';
+import { DepartmentsComponent } from './components/departments/departments.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { FallDirective } from './directives/gsap/fall.directive';
     CoreAnimationDirective,
     FadeInDirective,
     SlideDirective,
-    FallDirective
+    FallDirective,
+    DepartmentsComponent
   ],
   imports: [
     BrowserModule,
