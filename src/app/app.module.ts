@@ -16,6 +16,7 @@ import { SlideDirective } from './directives/gsap/slide.directive';
 import { FallDirective } from './directives/gsap/fall.directive';
 import { DepartmentsComponent } from './components/departments/departments.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +29,8 @@ import { DepartmentsComponent } from './components/departments/departments.compo
     FadeInDirective,
     SlideDirective,
     FallDirective,
-    DepartmentsComponent
+    DepartmentsComponent,
+    
   ],
   imports: [
     BrowserModule,
