@@ -3,7 +3,7 @@
         @apply flex flex-row items-center justify-between lg:py-10 bg-neutral-900 lg:px-32 font-body border-b-[1px] border-b-neutral-600;
 
         .logo{
-            @apply text-gray-300 font-display text-4xl;
+            @apply text-gray-300 font-display text-4xl cursor-pointer;
         }
 
         .menus{
