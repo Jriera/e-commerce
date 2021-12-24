@@ -31,9 +31,18 @@ $bounce: cubic-bezier(0.68, -0.55, 0.27, 1.55);
       .price {
         @apply font-bold text-xl mb-8 text-neutral-900;
       }
+      .into-cart{
+        @apply flex items-center justify-start font-body;
+        .quantity-button{
+          @apply bg-gray-200 py-4 px-6 hover:text-orange-500 cursor-pointer font-bold text-lg text-gray-400;
+        }
+        .quantity{
+          @apply py-4 px-6 text-neutral-400 bg-gray-200 font-normal text-lg
+        }
+      }
 
       .detail-button {
-        @apply relative bg-orange-400  text-orange-50 font-bold py-4 px-6 max-w-fit uppercase text-sm cursor-pointer before:bg-white before:h-0 before:absolute before:w-full before:left-0 before:top-0 before:bg-opacity-20 hover:before:h-full before:transition-all before:duration-500 before:ease-in-out;
+        @apply relative ml-8 bg-orange-400  text-orange-50 font-bold py-4 px-6 max-w-fit uppercase text-sm cursor-pointer before:bg-white before:h-0 before:absolute before:w-full before:left-0 before:top-0 before:bg-opacity-20 hover:before:h-full before:transition-all before:duration-500 before:ease-in-out;
       }
     } // end product info
   } //end product
@@ -81,6 +90,7 @@ $bounce: cubic-bezier(0.68, -0.55, 0.27, 1.55);
       }
       
     }
+    
     .detail-button{
       @apply relative bg-orange-400  text-orange-50 font-bold py-4 px-6 max-w-fit uppercase text-sm cursor-pointer before:bg-white before:h-0 before:absolute before:w-full before:left-0 before:top-0 before:bg-opacity-20 hover:before:h-full before:transition-all before:duration-500 before:ease-in-out;
     }
