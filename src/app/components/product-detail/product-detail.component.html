@@ -12,7 +12,13 @@
                 <h3>{{productDetail.title}}</h3>
                 <p>{{productDetail.description}}</p>
                 <p class="price">€ {{productDetail.price}}</p>
-                <div class="detail-button">Add to Cart</div>
+
+                <div class="into-cart">
+                    <div class="quantity-button" (click)="reduceQuantity()"> - </div>
+                    <div class="quantity">{{quantity}}</div>
+                    <div class="quantity-button" (click)="increaseQuantity()"> + </div>
+                    <div class="detail-button">Add to Cart</div>
+                </div>
             </div>
         </section>
         <section class="product-features">
@@ -66,6 +72,7 @@
 </ng-container>
 
 <app-departments></app-departments>
+<app-store-info></app-store-info>
 
 <!-- It only shows when products is empty -->
 <section *ngIf="productDetail===null" class="loading-image">
