@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { HttpService } from 'src/app/services/http.service';
 import { Product } from '../../models/product';
 import { Location } from '@angular/common';
@@ -18,8 +18,13 @@ export class ProductDetailComponent implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     private http: HttpService,
-    private location: Location
-  ) {}
+    private location: Location,
+    private router: Router
+  ) {
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+      //this is to prevent the router from reusing the route and forcing it to reload the page when params change
+     
+  }
 
   ngOnInit(): void {
     this.getProductId();
@@ -38,10 +43,11 @@ export class ProductDetailComponent implements OnInit {
   }
 
   getRelatedProducts(amount: number, reference: number) {
-    const index: number = Number(reference);//apparently reference is treated as string even with type number
+    const index: number = Number(reference); //apparently reference is treated as string even with type number
     for (let i = 1; i <= amount; i++) {
       let iteration: number = index + i;
-      if (iteration > 20) { //if the product id is greater than 20, it will be reset to 1 to get the first product
+      if (iteration > 20) {
+        //if the product id is greater than 20, it will be reset to 1 to get the first product
         iteration = iteration - 20;
       }
 
@@ -60,6 +66,6 @@ export class ProductDetailComponent implements OnInit {
   }
 
   reduceQuantity() {
-    this.quantity>1 ? this.quantity-- : this.quantity;
+    this.quantity > 1 ? this.quantity-- : this.quantity;
   }
 }
