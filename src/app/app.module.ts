@@ -15,6 +15,8 @@ import { FadeInDirective } from './directives/gsap/fade-in.directive';
 import { SlideDirective } from './directives/gsap/slide.directive';
 import { FallDirective } from './directives/gsap/fall.directive';
 import { DepartmentsComponent } from './components/departments/departments.component';
+import { StoreInfoComponent } from './components/store-info/store-info.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 
 @NgModule({
@@ -30,6 +32,8 @@ import { DepartmentsComponent } from './components/departments/departments.compo
     SlideDirective,
     FallDirective,
     DepartmentsComponent,
+    StoreInfoComponent,
+    FooterComponent,
     
   ],
   imports: [
