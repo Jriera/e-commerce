@@ -13,6 +13,7 @@ export class ProductDetailComponent implements OnInit {
   productId: number = this.getProductId();
   productDetail: Product | null = null;
   recommended: Product[] = [];
+  quantity: number = 1;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -52,5 +53,13 @@ export class ProductDetailComponent implements OnInit {
 
   goBack() {
     this.location.back();
+  }
+
+  increaseQuantity() {
+    this.quantity++;
+  }
+
+  reduceQuantity() {
+    this.quantity>1 ? this.quantity-- : this.quantity;
   }
 }
