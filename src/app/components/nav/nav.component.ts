@@ -31,6 +31,7 @@ export class NavComponent implements OnInit {
   constructor(private paramService:UrlParamsService) { }
 
   ngOnInit(): void {
+    this.getCategory();
     
   }
 
