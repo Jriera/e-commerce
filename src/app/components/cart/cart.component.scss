@@ -1,0 +1,46 @@
+:host{
+    @apply font-body;
+}
+.cart{
+    @apply text-lg font-bold mb-8;
+}
+
+.item {
+  @apply flex justify-between mb-4 items-center;
+  .item-identity {
+      @apply flex max-w-[50%] items-center;
+      img{
+        @apply w-14 mr-4 bg-neutral-200 rounded p-1;
+      }
+    h3 {
+      @apply font-bold text-sm line-clamp-1;
+    }
+
+    .price {
+      @apply font-bold text-sm  text-neutral-500;
+    }
+  }
+
+  .quantities {
+    @apply flex items-center justify-start font-body;
+    .quantity-button {
+      @apply bg-gray-200 py-1 px-4 hover:text-orange-500 cursor-pointer font-bold text-base text-gray-400;
+    }
+    .quantity {
+      @apply py-1 px-4 text-neutral-900 bg-gray-200 font-normal text-base;
+    }
+  }
+}
+.item-total{
+    @apply flex justify-between items-center my-8;
+    .total-title{
+        @apply font-thin text-base uppercase text-neutral-500;
+    }
+    .total-value{
+        @apply font-bold text-lg text-stone-900;
+    }
+}
+
+.check-out {
+    @apply relative  bg-orange-400 text-center text-orange-50 font-bold py-3 px-6 w-full uppercase text-sm cursor-pointer before:bg-white before:h-0 before:absolute before:w-full before:left-0 before:top-0 before:bg-opacity-20 hover:before:h-full before:transition-all before:duration-500 before:ease-in-out;
+}
