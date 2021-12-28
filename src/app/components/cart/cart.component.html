@@ -1,0 +1,26 @@
+<h3 class="cart">Cart({{cartItems.length}})</h3>
+<div class="item" *ngFor="let item of cartItems">
+    <div class="item-identity">
+        <img src="assets/images/{{item.id}}.png" alt="">
+        <div class="item-identity-text">
+            <h3>{{item.title | slice:0:12}}... </h3>
+            <p class="price">€ {{item.price}}</p>
+        </div>
+    </div>
+    <div class="quantities">
+        <div class="quantity-button"> - </div>
+        <div class="quantity">{{item.quantity}}</div>
+        <div class="quantity-button"> + </div>
+    </div>
+</div>
+<div class="item-total">
+    <h3 class="total-title">total</h3>
+    <p class="total-value">€ {{cartTotal | number:'1.0-2'}}</p>
+</div>
+<div class="check-out">checkout</div>
+
+
+
+    
+
+

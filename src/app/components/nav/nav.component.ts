@@ -1,5 +1,7 @@
 import { animate, animateChild, query, state, style, transition, trigger } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
+import { CartComponent } from '../cart/cart.component';
+import { MatDialog } from '@angular/material/dialog';
 import { Observable, Subscription } from 'rxjs';
 import { CartService } from 'src/app/services/cart.service';
 import { UrlParamsService } from 'src/app/services/url-params.service';
@@ -28,15 +30,18 @@ import { UrlParamsService } from 'src/app/services/url-params.service';
 })
 export class NavComponent implements OnInit {
 
-  expand: boolean = false;
-  categorySelected:string|null =''
-  items$:Observable<number>|null = null;
-  items:number = 0;
-  count = new Subscription();
+  expand: boolean = false; //controls the header expansion
+  categorySelected:string|null ='' //controls the header title
+  items$:Observable<number>|null = null; //Observable to keep track of cart length
+  items:number = 0; //Variable modfied by the subscription to the cart length observable
+  count = new Subscription(); // subscription that updates the items variable and is destroyed on component destruction
+
   constructor(
     private paramService:UrlParamsService,
-    private cartService:CartService
+    private cartService:CartService,
+    private mDialog:MatDialog
   ) { }
+
 
    
 
@@ -46,10 +51,18 @@ export class NavComponent implements OnInit {
     this.count = this.cartService.getItems().subscribe((items)=>{
       this.items = items;
     })
+  }
+
+  openCart(){
+    this.mDialog.open(CartComponent,{ 
+      width: '400px',
+      height: '600px',
+      backdropClass: 'backdrop'
+  });
+  }
     
 
     
-  }
 
   getCategory(){
     this.paramService.get().subscribe((params)=>{
@@ -57,9 +70,7 @@ export class NavComponent implements OnInit {
     })
   }
 
-  getItems(){
-    
-  }
+ 
  
 
 
