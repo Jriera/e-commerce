@@ -71,8 +71,8 @@ export class ProductDetailComponent implements OnInit {
     this.quantity > 1 ? this.quantity-- : this.quantity;
   }
 
-  addToCart(product:Product) {
-    this.cartService.addToCart(product);
+  addToCart(product:Product,quantity:number) {
+    this.cartService.addToCart(product,quantity);
     this.cartService.getCart().subscribe((data) => {
       console.log(data);
     });
