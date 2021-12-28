@@ -32,9 +32,23 @@ export class CartComponent implements OnInit {
     this.cartTotal=this.cartService.getTotal();
   }
 
+  addQuantity(product: Product){
+    this.cartService.addQuantity(product);
+    this.getTotal();
+  }
 
-
-
-
-
+  removeQuantity(product: Product){
+    this.cartService.removeQuantity(product);
+    this.cartItems$ = this.cartService.getCart();
+    this.showItems();
+    this.cartItems.length===0?this.cartTotal=0:this.getTotal();
+  }
 }
+   
+   
+
+
+
+
+
+
