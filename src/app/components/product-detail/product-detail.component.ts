@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { HttpService } from 'src/app/services/http.service';
 import { Product } from '../../models/product';
 import { Location } from '@angular/common';
+import { CartService } from 'src/app/services/cart.service';
 
 @Component({
   selector: 'app-product-detail',
@@ -19,7 +20,8 @@ export class ProductDetailComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private http: HttpService,
     private location: Location,
-    private router: Router
+    private router: Router,
+    private cartService: CartService
   ) {
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
       //this is to prevent the router from reusing the route and forcing it to reload the page when params change
@@ -68,4 +70,14 @@ export class ProductDetailComponent implements OnInit {
   reduceQuantity() {
     this.quantity > 1 ? this.quantity-- : this.quantity;
   }
+
+  addToCart(product:Product) {
+    this.cartService.addToCart(product);
+    this.cartService.getCart().subscribe((data) => {
+      console.log(data);
+    });
+
+  } 
+
+
 }
