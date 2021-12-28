@@ -35,5 +35,34 @@ export class CartService {
    return this.cart.map(item => item.quantity!==undefined?item.price * item.quantity:0).reduce((a,b) => a+b);
   }
 
-  
+  addQuantity(product: Product) {
+    this.cart.forEach(item => {
+      if (item.id === product.id) {
+        item.quantity!==undefined?item.quantity++:item.quantity=1;
+      }
+    });
+  }
+  removeQuantity(product: Product) {
+    this.cart.forEach(item => {
+      if (item.id === product.id) {
+        if(item.quantity!==undefined){
+          item.quantity--;
+          if(item.quantity===0){
+            this.removeItem(product);
+          }
+        }
+      }
+    });
+  }
+  removeItem(product: Product) {
+    this.cart = this.cart.filter(item => item.id !== product.id);
+   this.cart$=of(this.cart);
+    this.itemsInCart.next(this.cart.length);
+  }
 }
+            
+            
+
+
+
+  
