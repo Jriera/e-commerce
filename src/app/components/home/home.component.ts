@@ -17,11 +17,10 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewChecked {
 
     this.scrollAnims();
     this.st?.enable();
-    console.log('init');
+    
   }
 
   ngAfterViewChecked() {
-    console.log('after view checked');
     ScrollTrigger.refresh(); // since we're using ScrollTrigger, we need to refresh it due to the way angular handles routing without page refresh
   }
 
