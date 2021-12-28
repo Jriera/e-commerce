@@ -12,9 +12,17 @@
                 @apply mr-4 hover:text-orange-500 transition duration-300 ease-in cursor-pointer;
             }
         }
-        img{
-            @apply cursor-pointer;
+        .cart{
+            @apply relative;
+            img{
+                @apply cursor-pointer py-2;
+            }
+            .cart-quantity{
+                @apply absolute top-0 -right-1 text-orange-50 text-xs font-bold bg-orange-500 px-1 rounded-full;
+            }
+
         }
+        
 
         .active{
             @apply text-orange-400;
