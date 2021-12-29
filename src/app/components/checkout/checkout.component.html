@@ -1,1 +1,70 @@
-<app-cart></app-cart>
+<div class="container">
+    
+    <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
+        <h2>checkout</h2>
+        <div class="form-block">
+            <h3>Billing Details</h3>
+
+            <div class="inputs">
+                <div class="input-block">
+                    <label for="name">Name: </label>
+                    <input formControlName='name'>
+                </div>
+                <div class="input-block even">
+                    <label for="email">Email Address: </label>
+                    <input formControlName='email'>
+                </div>
+                <div class="input-block">
+                    <label for="phone">Phone Number: </label>
+                    <input formControlName='phone'>
+                </div>
+            </div>
+        </div>
+        
+
+            <div class="form-block">
+                <h3>Shipping Info</h3>
+                <div class="inputs">
+                    <div class="input-block address">
+                        <label for="address">Address: </label>
+                        <input formControlName='address'>
+                    </div>
+                    <div class="input-block">
+                        <label for="zipCode">Zip Code: </label>
+                        <input formControlName='zipCode'>
+                    </div>
+                    <div class="input-block even">
+                        <label for="city">City: </label>
+                        <input formControlName='city'>
+                    </div>
+                    <div class="input-block">
+                        <label for="country">Country: </label>
+                        <input formControlName='country'>
+                    </div>
+                </div>
+            </div>
+       
+        
+            <div class="form-block">
+                <h3>payment details</h3>
+                <div class="inputs">
+                    <div class="input-block">
+                        <label for="cardNumber">Card Number: </label>
+                        <input formControlName='cardNumber'>
+                    </div>
+                    <div class="input-block even">
+                        <label for="cardExpiry">Card Expiry: </label>
+                        <input formControlName='cardExpiry'>
+                    </div>
+                    <div class="input-block">
+                        <label for="cardCvc">CVC: </label>
+                        <input formControlName='cardCvc'>
+                    </div>
+                </div>
+            </div>
+       
+
+    </form>
+    
+    <app-cart></app-cart>
+</div>
