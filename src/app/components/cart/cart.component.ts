@@ -39,7 +39,6 @@ export class CartComponent implements OnInit {
 
   removeQuantity(product: Product){
     this.cartService.removeQuantity(product);
-    this.cartItems$ = this.cartService.getCart();
     this.showItems();
     this.cartItems.length===0?this.cartTotal=0:this.getTotal();
   }
