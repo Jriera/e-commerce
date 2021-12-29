@@ -1,6 +1,6 @@
 import { animate, style, transition, trigger } from '@angular/animations';
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { ActivatedRoute,  RouterOutlet } from '@angular/router';
 import { Router } from '@angular/router';
 
 @Component({
@@ -24,7 +24,7 @@ import { Router } from '@angular/router';
 export class AppComponent {
   title = 'e-commerce';
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private activatedRoute:ActivatedRoute) {}
 
   prepareRoute(outlet: RouterOutlet) {
     if (outlet.isActivated) {
@@ -34,6 +34,11 @@ export class AppComponent {
   }
 
   isHomeRoute() {
-    return this.router.url === '/';
+    if(this.router.url === '/clothing' || this.router.url === '/electronics' || this.router.url === '/jewelery' ){
+    return false;
+    } else{
+      return true;
+    }
+    
   }
 }
