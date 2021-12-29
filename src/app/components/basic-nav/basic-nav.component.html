@@ -6,7 +6,9 @@
         <div  routerLink="/electronics" routerLinkActive="active" >Electronics</div>
         <div routerLink="/jewelery" routerLinkActive="active" >Jewellery</div>
     </div>
-    <div>
-        <img src="/assets/icons/icon-cart.svg" alt="">
+    <div class="cart">
+        <div  class="cart-quantity" *ngIf="items > 0" >{{items$ |async}}</div>
+        <img (click)="openCart()" src="/assets/icons/icon-cart.svg" alt="">
+       
     </div>
 </nav>
