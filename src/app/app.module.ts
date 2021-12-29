@@ -4,6 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { MatDialogModule } from '@angular/material/dialog';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
@@ -20,6 +21,7 @@ import { SlideDirective } from './directives/gsap/slide.directive';
 import { FallDirective } from './directives/gsap/fall.directive';
 import { CoreAnimationDirective } from './directives/gsap/core-animation.directive';
 import { CartComponent } from './components/cart/cart.component';
+import { CheckoutComponent } from './components/checkout/checkout.component';
 
 
 
@@ -39,6 +41,7 @@ import { CartComponent } from './components/cart/cart.component';
     StoreInfoComponent,
     FooterComponent,
     CartComponent,
+    CheckoutComponent,
     
   ],
   imports: [
@@ -46,7 +49,8 @@ import { CartComponent } from './components/cart/cart.component';
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    MatDialogModule
+    MatDialogModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
