@@ -21,22 +21,26 @@ export class CheckoutComponent implements OnInit {
   }
 
   checkoutForm = this.fb.group({
-    name:['',Validators.required],
-    email:['',Validators.required],
-    phone:['',Validators.required],
-    shipping: this.fb.group({
-    address:['',Validators.required],
-    zipCode:[''],
-    city:['',Validators.required],
-    country:['',Validators.required],
-    }),
-    paymentMethod:this.fb.group({
-    cardNumber:['',Validators.required],
-    cardName:['',Validators.required],
-    cardExpiry:['',Validators.required],
-    cardCvc:['',Validators.required],
-    })
+    name:['name',Validators.required],
+    email:['email',Validators.required],
+    phone:['phone',Validators.required],
+    
+    address:['address',Validators.required],
+    zipCode:['00000'],
+    city:['city',Validators.required],
+    country:['country',Validators.required],
+   
+    
+    cardNumber:['1234567891234567',Validators.required],
+    cardName:['card name',Validators.required],
+    cardExpiry:['expiry',Validators.required],
+    cardCvc:['123',Validators.required],
+    
   })
+
+  onSubmit(){
+    console.log(this.checkoutForm.value);
+  } 
 
 
 
