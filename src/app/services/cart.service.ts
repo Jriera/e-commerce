@@ -32,7 +32,12 @@ export class CartService {
   }
 
   getTotal() {
-   return this.cart.map(item => item.quantity!==undefined?item.price * item.quantity:0).reduce((a,b) => a+b);
+   const prices = this.cart.map(item => item.quantity!==undefined?item.price * item.quantity:0);
+   if(prices.length===0){
+     return 0;
+   } else{
+      return prices.reduce((a, b) => a + b);
+   }
   }
 
   addQuantity(product: Product) {
