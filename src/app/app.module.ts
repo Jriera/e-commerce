@@ -15,13 +15,18 @@ import { BasicNavComponent } from './components/basic-nav/basic-nav.component';
 import { DepartmentsComponent } from './components/departments/departments.component';
 import { StoreInfoComponent } from './components/store-info/store-info.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { InputErrorPrinterComponent } from './components/input-error-printer/input-error-printer.component';
+import { CartComponent } from './components/cart/cart.component';
+import { CheckoutComponent } from './components/checkout/checkout.component';
 
 import { FadeInDirective } from './directives/gsap/fade-in.directive';
 import { SlideDirective } from './directives/gsap/slide.directive';
 import { FallDirective } from './directives/gsap/fall.directive';
 import { CoreAnimationDirective } from './directives/gsap/core-animation.directive';
-import { CartComponent } from './components/cart/cart.component';
-import { CheckoutComponent } from './components/checkout/checkout.component';
+
+
+
+
 
 
 
@@ -42,6 +47,8 @@ import { CheckoutComponent } from './components/checkout/checkout.component';
     FooterComponent,
     CartComponent,
     CheckoutComponent,
+    InputErrorPrinterComponent,
+    
     
   ],
   imports: [
