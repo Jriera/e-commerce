@@ -8,15 +8,16 @@
             <div class="inputs">
                 <div class="input-block">
                     <label for="name">Name: </label>
-                    <input formControlName='name'>
+                    <input formControlName='name' placeholder="Handsome">
+                    <span *ngIf=""></span>
                 </div>
                 <div class="input-block even">
                     <label for="email">Email Address: </label>
-                    <input formControlName='email'>
+                    <input formControlName='email'placeholder='example@example.com'>
                 </div>
                 <div class="input-block">
                     <label for="phone">Phone Number: </label>
-                    <input formControlName='phone'>
+                    <input formControlName='phone' placeholder="+34 123 456 789">
                 </div>
             </div>
         </div>
@@ -27,19 +28,19 @@
                 <div class="inputs">
                     <div class="input-block address">
                         <label for="address">Address: </label>
-                        <input formControlName='address'>
+                        <input formControlName='address' placeholder="125 St.John Avenue">
                     </div>
                     <div class="input-block">
                         <label for="zipCode">Zip Code: </label>
-                        <input formControlName='zipCode'>
+                        <input formControlName='zipCode' placeholder="01987">
                     </div>
                     <div class="input-block even">
                         <label for="city">City: </label>
-                        <input formControlName='city'>
+                        <input formControlName='city' placeholder="Horsholm">
                     </div>
                     <div class="input-block">
                         <label for="country">Country: </label>
-                        <input formControlName='country'>
+                        <input formControlName='country' placeholder="Denmark">
                     </div>
                 </div>
             </div>
@@ -50,15 +51,15 @@
                 <div class="inputs">
                     <div class="input-block">
                         <label for="cardNumber">Card Number: </label>
-                        <input formControlName='cardNumber'>
+                        <input formControlName='cardNumber' placeholder="4567 8901 2345 5678">
                     </div>
                     <div class="input-block even">
                         <label for="cardExpiry">Card Expiry: </label>
-                        <input formControlName='cardExpiry'>
+                        <input formControlName='cardExpiry' placeholder="12/28">
                     </div>
                     <div class="input-block">
                         <label for="cardCvc">CVC: </label>
-                        <input formControlName='cardCvc'>
+                        <input formControlName='cardCvc' placeholder='123'>
                     </div>
                 </div>
             </div>
@@ -66,5 +67,8 @@
 
     </form>
     
-    <app-cart></app-cart>
+    
+        <app-cart></app-cart>
+       
+    
 </div>
