@@ -1,5 +1,5 @@
 <div class="container">
-    
+
     <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
         <h2>checkout</h2>
         <div class="form-block">
@@ -9,66 +9,89 @@
                 <div class="input-block">
                     <label for="name">Name: </label>
                     <input formControlName='name' placeholder="Handsome">
-                    <span *ngIf=""></span>
+                    <app-input-error-printer [control]="checkoutForm.controls['name']"></app-input-error-printer>
                 </div>
                 <div class="input-block even">
                     <label for="email">Email Address: </label>
-                    <input formControlName='email'placeholder='example@example.com'>
+                    <input formControlName='email' placeholder='example@example.com'>
+                    <app-input-error-printer [control]="checkoutForm.controls['email']"></app-input-error-printer>
                 </div>
                 <div class="input-block">
                     <label for="phone">Phone Number: </label>
                     <input formControlName='phone' placeholder="+34 123 456 789">
+                    <app-input-error-printer [control]="checkoutForm.controls['phone']"></app-input-error-printer>
                 </div>
             </div>
         </div>
-        
 
-            <div class="form-block">
-                <h3>Shipping Info</h3>
-                <div class="inputs">
-                    <div class="input-block address">
-                        <label for="address">Address: </label>
-                        <input formControlName='address' placeholder="125 St.John Avenue">
-                    </div>
-                    <div class="input-block">
-                        <label for="zipCode">Zip Code: </label>
-                        <input formControlName='zipCode' placeholder="01987">
-                    </div>
-                    <div class="input-block even">
-                        <label for="city">City: </label>
-                        <input formControlName='city' placeholder="Horsholm">
-                    </div>
-                    <div class="input-block">
-                        <label for="country">Country: </label>
-                        <input formControlName='country' placeholder="Denmark">
-                    </div>
+
+        <div class="form-block">
+            <h3>Shipping Info</h3>
+            <div class="inputs">
+                <div class="input-block address">
+                    <label for="address">Address: </label>
+                    <input formControlName='address' placeholder="125 St.John Avenue">
+                    <app-input-error-printer [control]="checkoutForm.controls['address']"></app-input-error-printer>
+                </div>
+                <div class="input-block">
+                    <label for="zipCode">Zip Code: </label>
+                    <input formControlName='zipCode' placeholder="01987">
+                    <app-input-error-printer [control]="checkoutForm.controls['zipCode']"></app-input-error-printer>
+                </div>
+                <div class="input-block even">
+                    <label for="city">City: </label>
+                    <input formControlName='city' placeholder="Horsholm">
+                    <app-input-error-printer [control]="checkoutForm.controls['city']"></app-input-error-printer>
+                </div>
+                <div class="input-block">
+                    <label for="country">Country: </label>
+                    <input formControlName='country' placeholder="Denmark">
+                    <app-input-error-printer [control]="checkoutForm.controls['country']"></app-input-error-printer>
                 </div>
             </div>
-       
-        
-            <div class="form-block">
-                <h3>payment details</h3>
-                <div class="inputs">
-                    <div class="input-block">
-                        <label for="cardNumber">Card Number: </label>
-                        <input formControlName='cardNumber' placeholder="4567 8901 2345 5678">
-                    </div>
-                    <div class="input-block even">
-                        <label for="cardExpiry">Card Expiry: </label>
-                        <input formControlName='cardExpiry' placeholder="12/28">
-                    </div>
-                    <div class="input-block">
-                        <label for="cardCvc">CVC: </label>
-                        <input formControlName='cardCvc' placeholder='123'>
-                    </div>
+        </div>
+
+
+        <div class="form-block">
+            <h3>payment details</h3>
+            <div class="inputs">
+                <div class="input-block">
+                    <label for="cardNumber">Card Number: </label>
+                    <input formControlName='cardNumber' placeholder="4567 8901 2345 5678">
+                    <small *ngIf="(
+              checkoutForm.get('cardNumber')?.dirty ||
+              checkoutForm.get('cardNumber')?.touched
+             ) &&
+            checkoutForm.get('cardNumber')?.invalid">
+                        The credit card number must be 16 digits long
+                    </small>
+                    <app-input-error-printer [control]="checkoutForm.controls['cardNumber']"></app-input-error-printer>
+                </div>
+                <div class="input-block even">
+                    <label for="cardExpiry">Card Expiry: </label>
+                    <input formControlName='cardExpiry' placeholder="12/28">
+                    <app-input-error-printer [control]="checkoutForm.controls['cardExpiry']"></app-input-error-printer>
+                </div>
+                <div class="input-block">
+                    <label for="cardCvc">CVC: </label>
+                    <input formControlName='cardCvc' placeholder='123'>
+                    <small *ngIf="(
+              checkoutForm.get('cardCvc')?.dirty ||
+              checkoutForm.get('cardCvc')?.touched
+             ) &&
+            checkoutForm.get('cardCvc')?.invalid">
+                        Digit control is 3 digits long
+                    </small>
+                    <app-input-error-printer [control]="checkoutForm.controls['cardCvc']"></app-input-error-printer>
                 </div>
             </div>
-       
+        </div>
+
 
     </form>
-    
-    
-        <app-cart></app-cart>
-       
-    
+
+
+    <app-cart></app-cart>
+
+
 </div>
