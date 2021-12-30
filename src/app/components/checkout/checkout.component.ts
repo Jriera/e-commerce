@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FormBuilder,Validators } from '@angular/forms';
+import { creditCardValidator } from '../../directives/credit-card-validator.directive';
 
 
 @Component({
@@ -20,9 +21,14 @@ export class CheckoutComponent implements OnInit {
     
   }
 
+  ngAfterViewInit(){
+    console.log(this.checkoutForm.controls['cardNumber'].value);
+    console.log(this.checkoutForm.controls['cardNumber'].errors);
+  }
+
   checkoutForm = this.fb.group({
     name:['',Validators.required],
-    email:['',Validators.required,Validators.email],
+    email:['',[Validators.required,Validators.email]],
     phone:['',Validators.required],
     
     address:['',Validators.required],
@@ -31,15 +37,16 @@ export class CheckoutComponent implements OnInit {
     country:['',Validators.required],
    
     
-    cardNumber:['',Validators.required],
+    cardNumber:['',[Validators.required,creditCardValidator(/^\d{16}$/)]],
     cardName:['',Validators.required],
     cardExpiry:['',Validators.required],
-    cardCvc:['',Validators.required],
+    cardCvc:['',[Validators.required,creditCardValidator(/^\d{3}$/)]],
     
   })
 
   onSubmit(){
     console.log(this.checkoutForm.value);
+    console.log(this.checkoutForm.valid);
   } 
 
 
