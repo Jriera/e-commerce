@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Product } from 'src/app/models/product';
 import { CartService } from 'src/app/services/cart.service';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-cart',
@@ -14,7 +15,7 @@ export class CartComponent implements OnInit {
   cartItems:Product[] = [];
   cartTotal:number = 0;
 
-  constructor(private cartService:CartService) { }
+  constructor(private cartService:CartService,private mDialog:MatDialog) { }
 
   ngOnInit(): void {
     this.cartItems$ = this.cartService.getCart();
@@ -42,6 +43,10 @@ export class CartComponent implements OnInit {
     this.cartItems$ = this.cartService.getCart();
     this.showItems();
     this.cartItems.length===0?this.cartTotal=0:this.getTotal();
+  }
+
+  closeDialog(){
+    this.mDialog.closeAll();
   }
 }
    
