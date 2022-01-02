@@ -18,11 +18,23 @@ import { FooterComponent } from './components/footer/footer.component';
 import { InputErrorPrinterComponent } from './components/input-error-printer/input-error-printer.component';
 import { CartComponent } from './components/cart/cart.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
+import { AuthComponent } from './components/auth/auth.component';
 
 import { FadeInDirective } from './directives/gsap/fade-in.directive';
 import { SlideDirective } from './directives/gsap/slide.directive';
 import { FallDirective } from './directives/gsap/fall.directive';
 import { CoreAnimationDirective } from './directives/gsap/core-animation.directive';
+
+
+import { environment } from '../environments/environment';
+
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { provideAuth,getAuth } from '@angular/fire/auth';
+import { provideDatabase,getDatabase } from '@angular/fire/database';
+import { provideFirestore,getFirestore } from '@angular/fire/firestore';
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+
 
 
 
@@ -48,6 +60,8 @@ import { CoreAnimationDirective } from './directives/gsap/core-animation.directi
     CartComponent,
     CheckoutComponent,
     InputErrorPrinterComponent,
+    AuthComponent,
+    
     
     
   ],
@@ -57,7 +71,13 @@ import { CoreAnimationDirective } from './directives/gsap/core-animation.directi
     HttpClientModule,
     BrowserAnimationsModule,
     MatDialogModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAuthModule,
+    provideAuth(() => getAuth()),
+    provideDatabase(() => getDatabase()),
+    provideFirestore(() => getFirestore()),
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
