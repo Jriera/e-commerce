@@ -1,0 +1,23 @@
+<form [formGroup]="signUpForm">
+    <div class="input-block even">
+        <label for="email">Email Address: </label>
+        <input formControlName='email' placeholder='example@example.com'>
+        
+    </div>
+    <div class="input-block even">
+        <label for="password">Password: </label>
+        <input formControlName='password' placeholder='example@example.com'>
+        
+    </div>
+</form>
+
+<!-- <button (click)="signup(signUpForm.value.email,signUpForm.value.password)">Sign Up</button> -->
+<br>
+<!-- <button (click)="signin(signUpForm.value.email,signUpForm.value.password)">Sign In</button> -->
+<br>
+<button (click)="googleLogin()">Google</button>
+<br>
+<button (click)="googleLoginRedirect()">Google Redirect</button>
+<br>
+<button (click)="currentUser()">currentUser</button>
+
