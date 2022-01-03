@@ -4,6 +4,7 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { FormBuilder, Validators } from '@angular/forms';
 
 import { GoogleAuthProvider } from 'firebase/auth';
+import { FirebaseService } from 'src/app/services/firebase.service';
 
 @Component({
   selector: 'app-auth',
@@ -12,9 +13,14 @@ import { GoogleAuthProvider } from 'firebase/auth';
 })
 export class AuthComponent implements OnInit {
 
-  constructor(private auth:AngularFireAuth, private fb:FormBuilder) { }
+  constructor(
+    private auth:AngularFireAuth, 
+    private fb:FormBuilder,
+    private firebaseService:FirebaseService
+    ) { }
 
   ngOnInit(): void {
+    this.getGoogleResult();
   }
 
   signUpForm = this.fb.group({
@@ -22,16 +28,14 @@ export class AuthComponent implements OnInit {
     password:['',Validators.required]
   })
 
-/* 
+
 signup(email:string,password:string){
-  this.auth.createUserWithEmailAndPassword(email,password)
-  .then(res=>{
-    console.log(res);
-  })
-  .catch(err=>{
-    console.log(err);
-  })
-} */
+    this.firebaseService.emailSignUp(email,password);
+  }
+login(email:string,password:string){
+    this.firebaseService.emailSignIn(email,password);
+}
+
 
 /* signin(email:string,password:string){
   this.auth.signInWithEmailAndPassword(email,password)
@@ -46,11 +50,20 @@ signup(email:string,password:string){
 } */
 
 googleLogin(){
+  this.firebaseService.googleLoginRedirect();
+}
+
+async getGoogleResult(){
+  const result = await this.firebaseService.redirectResult();
+  console.log(result);
+}
+
+/* googleLogin(){
   const provider = new GoogleAuthProvider();
   this.auth.signInWithPopup(provider)
   .then(result=>{
     if (result.credential) {
-      /** @type {firebase.auth.OAuthCredential} */
+      // @type {firebase.auth.OAuthCredential} 
       var credential:any = result.credential;
 
       // This gives you a Google Access Token. You can use it to access the Google API.
@@ -64,20 +77,9 @@ googleLogin(){
   .catch(err=>{
     console.log(err);
   })
-}
+} */
 
-googleLoginRedirect(){
-  const provider = new GoogleAuthProvider();
-  this.auth.signInWithRedirect(provider)
-  .then(result=>{
-    console.log(result);
-    
-    
-  })
-  .catch(err=>{
-    console.log(err);
-  })
-}
+
 
 currentUser(){
   this.auth.onAuthStateChanged(user=>{
