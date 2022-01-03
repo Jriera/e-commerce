@@ -17,7 +17,7 @@
    
 <div class="item-total">
     <h3 class="total-title">total</h3>
-    <p class="total-value">€ {{cartTotal | number:'1.0-2'}}</p>
+    <p class="total-value">{{cartTotal | currency:'EUR':'symbol-narrow'}}</p>
 </div>
 <div class="check-out" routerLink="/checkout" (click)="closeDialog()">checkout</div>
 

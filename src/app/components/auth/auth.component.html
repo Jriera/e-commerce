@@ -1,0 +1,33 @@
+
+
+
+<div class="container">
+
+    <form [formGroup]="signUpForm">
+        <h2>Authentication</h2>
+        <div class="form-block">
+            <h3>Account Details</h3>
+
+            <div class="inputs">
+                <div class="input-block">
+                    <label for="email">Email Address: </label>
+                    <input formControlName='email' placeholder='example@example.com'>
+                    <app-input-error-printer [control]="signUpForm.controls['email']"></app-input-error-printer>
+                </div>
+                <div class="input-block">
+                    <label for="password">Password: </label>
+                    <input formControlName='password' placeholder="Your Password">
+                    <app-input-error-printer [control]="signUpForm.controls['password']"></app-input-error-printer>
+                </div>
+            </div>
+        </div>
+        <button (click)="signup(signUpForm.value.email,signUpForm.value.password)">Sign Up</button>
+    <button (click)="login(signUpForm.value.email,signUpForm.value.password)">Log In</button>
+    <button (click)="googleLogin()">Google</button>
+    </form>
+    
+    
+        
+
+
+

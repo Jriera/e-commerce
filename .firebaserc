@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "e-commerce-project-775e0": {
+      "hosting": {
+        "e-commerce": [
+          "e-commerce-project-775e0"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "e-commerce-project-775e0"
+  }
+}

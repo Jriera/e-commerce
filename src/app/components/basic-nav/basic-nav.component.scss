@@ -21,9 +21,34 @@ nav{
         }
 
     }
+
+    
+
+    
    
 
     .active{
         @apply text-orange-400;
     }
+}
+
+.user-nav{
+    @apply flex flex-row items-center justify-between gap-10 py-2 text-orange-100 bg-orange-900;
+    
+        @apply text-xs capitalize flex flex-row items-center gap-2 justify-between;
+        .welcome{
+            @apply flex items-center cursor-pointer;
+        }
+            
+        
+        .logout{
+            @apply cursor-pointer;
+        }
+
+        .profile{
+            img{
+                @apply rounded-full w-6 mr-3;
+            }
+        }
+    
 }

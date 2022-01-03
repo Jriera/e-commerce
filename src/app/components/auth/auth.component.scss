@@ -1,0 +1,46 @@
+.container{
+    @apply flex px-32  font-body bg-neutral-100 gap-8 pt-32;
+    form{
+        @apply bg-white rounded p-12 min-w-[65%];
+        h2{
+            @apply text-3xl font-bold uppercase mb-12;
+        }
+    }
+    .form-block{
+        @apply font-body mb-16  ;
+        h3{
+            @apply text-orange-500 text-sm uppercase font-bold mb-8;
+        }
+        .inputs{
+            @apply grid grid-rows-1 grid-cols-4 gap-4;
+        }
+
+        .input-block{
+            @apply flex flex-col gap-4 col-span-2 mb-5;
+            label{
+                @apply text-sm font-bold;
+            }
+            input{
+                @apply  border-[1px] border-neutral-200 rounded-md p-4 bg-white;
+            }
+            .ng-invalid{
+                @apply border-red-500;
+            }
+            app-input-error-printer, small{
+                @apply text-red-500;
+            }
+        }
+
+        .even{
+            @apply col-start-3;
+        }
+        .address{
+            @apply col-span-4
+        }
+            
+    }
+
+    button{
+        @apply  relative bg-orange-400  text-orange-50 font-bold py-4 px-6 max-w-fit uppercase text-sm cursor-pointer before:bg-white before:h-0 before:absolute before:w-full before:left-0 before:top-0 before:bg-opacity-20 hover:before:h-full before:transition-all before:duration-500 before:ease-in-out mr-2;
+      }
+}

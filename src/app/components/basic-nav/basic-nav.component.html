@@ -1,14 +1,50 @@
+<nav class="user-nav" *ngIf="user!==null">
+    
+        <div class="welcome">
+            <div class="profile">
+                <img src="{{user.photoURL}}" alt="">
+                
+            </div>
+            <p>Welcome,<span> {{user.displayName ?? user.email}}</span></p>
+        </div>
+        <div class="logout">
+            <div (click)="signOut()">Log  Out</div>
+            
+        </div>
+    
+</nav>
+
+<nav class="user-nav" *ngIf="user===null">
+    <div class="menus">
+        <div routerLink="/auth" routerLinkActive="active">Login</div>
+        <div routerLink="/register" routerLinkActive="active">Register</div>
+        <div>{{userId}}</div>
+    </div>
+</nav>
+
+
 <nav>
     <div class="logo" routerLink="">Shopaholic</div>
     <div class="menus">
         <div routerLink="" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Home</div>
-        <div routerLink="/clothing" routerLinkActive="active" >Clothing</div>
-        <div  routerLink="/electronics" routerLinkActive="active" >Electronics</div>
-        <div routerLink="/jewelery" routerLinkActive="active" >Jewellery</div>
+        <div routerLink="/clothing" routerLinkActive="active">Clothing</div>
+        <div routerLink="/electronics" routerLinkActive="active">Electronics</div>
+        <div routerLink="/jewelery" routerLinkActive="active">Jewellery</div>
     </div>
+
     <div class="cart">
-        <div  class="cart-quantity" *ngIf="items > 0" >{{items$ |async}}</div>
+        <div class="cart-quantity" *ngIf="items > 0">{{items$ |async}}</div>
         <img (click)="openCart()" src="/assets/icons/icon-cart.svg" alt="">
-       
+
     </div>
 </nav>
+
+
+
+
+
+
+
+
+
+
