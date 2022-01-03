@@ -25,19 +25,41 @@ export class FirebaseService {
   
   constructor(private ngfa: AngularFireAuth) {
     this.authStatusUpdate();
+    this.redirectResult();
   }
 
   
   currentUserUID: string|null = null; //everytime a user logs in an UID is returned, otherwise it returns null
-  authStatusSubj = new BehaviorSubject(this.currentUserUID); //we create a subject to keep track of anychanges in the log in status of users
+  authStatusSubj = new BehaviorSubject(this.currentUserUID); //we create a subject to keep track of any changes in the log in status of users
   currentUser$= this.authStatusSubj.asObservable(); // we create an observable that will be used to watch for changes in login status
+
+  currentUser:User|null = null; //we create a user object to keep track of the current user
+  userSubject = new BehaviorSubject(this.currentUser);
+  user$= this.userSubject.asObservable(); //we create an observable that will be used to watch for changes in the current user
+  
 
   authStatusUpdate() { //this function is used to update the login status of the user and is called in the service constructor
     this.ngfa.onAuthStateChanged(user => {
       this.currentUserUID = user ? user.uid : null;
+      this.currentUser = user? user : null;
       this.authStatusSubj.next(this.currentUserUID);
+      this.userSubject.next(this.currentUser);
     });
   }
+
+  async redirectResult(){ //this function captures the login information after the redirect login
+    try{
+      const result = await this.ngfa.getRedirectResult();
+      console.log(result.user);
+      
+      return result.user;
+    } catch(err){
+      console.log(err)
+      return err;
+    }
+    
+  }
+  
 
   async emailSignUp(email:string,password:string){ //this function is used to create a new user from the email and password provided
     try {
@@ -73,6 +95,13 @@ export class FirebaseService {
       console.log(err);
       return err;
     }
+    
+  }
+
+ 
+
+  signOut(){ //this function is used to sign out a user
+    this.ngfa.signOut();
   }
 
   //TODO: extend the user functionality by adding custom datafields, such as admin status. In order to do so we will need to create a new user document in firestore and add the custom datafields to it. The user document will be created in the following way:
