@@ -11,7 +11,7 @@
             <div class="product-info">
                 <h3>{{productDetail.title}}</h3>
                 <p>{{productDetail.description}}</p>
-                <p class="price">€ {{productDetail.price}}</p>
+                <p class="price"> {{productDetail.price | currency:'EUR':'symbol-narrow'}}</p>
 
                 <div class="into-cart">
                     <div class="quantity-button" (click)="reduceQuantity()"> - </div>
