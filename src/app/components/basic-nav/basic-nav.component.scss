@@ -33,11 +33,15 @@ nav{
 }
 
 .user-nav{
-    @apply flex flex-row items-center justify-between gap-10 py-2 text-orange-100 bg-orange-900;
+    @apply flex flex-row items-center justify-between gap-10 py-2 text-neutral-100 bg-zinc-900 border-0;
     
         @apply text-xs capitalize flex flex-row items-center gap-2 justify-between;
         .welcome{
             @apply flex items-center cursor-pointer;
+
+            p{
+                @apply mr-2
+            }
         }
             
         
@@ -46,9 +50,13 @@ nav{
         }
 
         .profile{
-            img{
+            img, mat-icon{
                 @apply rounded-full w-6 mr-3;
             }
         }
     
+}
+
+section{
+    @apply flex items-center;
 }
