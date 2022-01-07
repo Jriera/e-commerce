@@ -43,3 +43,10 @@ $e-commerce-theme: mat.define-light-theme((
 .backdrop{
   @apply bg-neutral-900 bg-opacity-60;
 }
+
+app-basic-nav{
+  nav{
+    @apply lg:sticky lg:top-0 lg:z-50;
+  }
+  
+}
