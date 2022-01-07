@@ -1,18 +1,17 @@
-.container{
-    @apply flex px-32  font-body bg-neutral-100 gap-8 pt-32;
+
     form{
-        @apply bg-white rounded p-12 min-w-[65%];
+        @apply bg-white rounded p-12 pt-6 min-w-[65%];
         h2{
             @apply text-3xl font-bold uppercase mb-12;
         }
     }
     .form-block{
-        @apply font-body mb-16  ;
+        @apply font-body mb-3  ;
         h3{
             @apply text-orange-500 text-sm uppercase font-bold mb-8;
         }
         .inputs{
-            @apply grid grid-rows-1 grid-cols-4 gap-4;
+            @apply flex flex-col;
         }
 
         .input-block{
@@ -21,7 +20,7 @@
                 @apply text-sm font-bold;
             }
             input{
-                @apply  border-[1px] border-neutral-200 rounded-md p-4 bg-white;
+                @apply  border-[1px] border-neutral-200 rounded-md p-2 bg-white;
             }
             .ng-invalid{
                 @apply border-red-500;
@@ -32,15 +31,28 @@
         }
 
         .even{
-            @apply col-start-3;
+            @apply lg:col-start-3 ;
         }
         .address{
-            @apply col-span-4
+            @apply col-span-4;
         }
             
     }
 
-    button{
-        @apply  relative bg-orange-400  text-orange-50 font-bold py-4 px-6 max-w-fit uppercase text-sm cursor-pointer before:bg-white before:h-0 before:absolute before:w-full before:left-0 before:top-0 before:bg-opacity-20 hover:before:h-full before:transition-all before:duration-500 before:ease-in-out mr-2;
+   .buttons{
+       @apply flex flex-col justify-evenly w-full items-center;
+       .email-button{
+        @apply  w-full mb-2 relative bg-orange-400  text-orange-50 font-bold py-4 px-6 text-sm cursor-pointer before:bg-white before:h-0 before:absolute before:w-full before:left-0 before:top-0 before:bg-opacity-20 hover:before:h-full before:transition-all before:duration-500 before:ease-in-out;
       }
-}
+      .button-wrapper{
+        @apply flex items-center w-full border-2 border-blue-500;
+      }
+      .google-logo{
+        @apply  w-1/5 pl-[15px];
+  }
+      .google{
+          @apply w-4/5 relative bg-[#4285F4] text-blue-50 font-bold py-4 px-6 text-sm cursor-pointer before:bg-white before:h-0 before:absolute before:w-full before:left-0 before:top-0 before:bg-opacity-20 hover:before:h-full before:transition-all before:duration-500 before:ease-in-out ;
+
+          
+      }
+   }
