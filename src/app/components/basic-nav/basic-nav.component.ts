@@ -5,6 +5,7 @@ import { User } from 'src/app/models/user';
 import { CartService } from 'src/app/services/cart.service';
 import { FirebaseService } from 'src/app/services/firebase.service';
 import { UrlParamsService } from 'src/app/services/url-params.service';
+import { AuthComponent } from '../auth/auth.component';
 import { CartComponent } from '../cart/cart.component';
 
 @Component({
@@ -41,6 +42,15 @@ export class BasicNavComponent implements OnInit {
   openCart() {
     // opens the cart dialog
     this.mDialog.open(CartComponent, {
+      width: '400px',
+      height: '600px',
+      backdropClass: 'backdrop',
+    });
+  }
+
+  openLogin() {
+    // opens the login dialog
+    this.mDialog.open(AuthComponent, {
       width: '400px',
       height: '600px',
       backdropClass: 'backdrop',
