@@ -1,12 +1,12 @@
 nav{
-    @apply flex flex-row items-center justify-between lg:py-10 bg-neutral-900 lg:px-32 font-body border-b-[1px] border-b-neutral-600;
+    @apply flex lg:flex-row items-center justify-center lg:justify-between lg:py-10 bg-neutral-900 lg:px-32 font-body border-b-[1px] border-b-neutral-600 lg:w-full w-screen;
 
     .logo{
-        @apply text-gray-300 font-display text-4xl cursor-pointer;
+        @apply text-gray-300 font-display text-4xl cursor-pointer text-center lg:text-left;
     }
 
     .menus{
-        @apply flex justify-center text-gray-300  text-sm uppercase font-bold gap-10 ;
+        @apply  justify-center text-gray-300  text-sm uppercase font-bold gap-10 hidden lg:flex;
         div{
             @apply mr-4 hover:text-orange-500 transition duration-300 ease-in cursor-pointer;
         }
@@ -33,7 +33,7 @@ nav{
 }
 
 .user-nav{
-    @apply flex flex-row items-center justify-between gap-10 py-2 text-neutral-100 bg-zinc-900 border-0;
+    @apply lg:flex flex-row items-center justify-between gap-10 py-2 text-neutral-100 bg-zinc-900 border-0 hidden;
     
         @apply text-xs capitalize flex flex-row items-center gap-2 justify-between;
         .welcome{
@@ -58,5 +58,5 @@ nav{
 }
 
 section{
-    @apply flex items-center;
-}
+     @apply hidden lg:flex;
+    }

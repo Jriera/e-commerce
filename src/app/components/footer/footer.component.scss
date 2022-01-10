@@ -2,13 +2,13 @@
     @apply bg-neutral-900 font-body relative;
 
     .content{
-        @apply bg-neutral-900 text-gray-100 p-32 flex justify-between items-start mt-36 gap-8;
+        @apply text-center md:text-left bg-neutral-900 text-gray-100 p-32 px-4 md:px-32 flex md:flex-row flex-col justify-center md:justify-between items-start mt-36 gap-8;
         .box{
             @apply pt-4 border-[6px] border-neutral-900 border-t-orange-500  top-36 absolute min-w-[8rem] rounded;
         }
 
         .left{
-            @apply w-1/2;
+            @apply md:w-1/2;
             .logo{
                 @apply text-gray-200 font-display text-4xl cursor-pointer mb-8;
             }
@@ -18,16 +18,16 @@
         }
 
         .right{
-            @apply flex flex-col justify-between min-h-full;
+            @apply flex flex-col md:justify-between justify-center min-h-full md:w-1/2 w-full text-center md:text-left;
             .menus{
-                @apply flex justify-center text-gray-300  text-sm uppercase font-bold gap-10 ;
+                @apply flex justify-center text-gray-300  text-sm uppercase font-bold gap-10 lg:flex-row flex-col;
                 div{
                     @apply mr-4 hover:text-orange-500 transition duration-300 ease-in cursor-pointer;
                 }
             }
 
             .socials{
-                @apply flex justify-end gap-4 mt-24;
+                @apply flex justify-center md:justify-end gap-4 mt-24;
                 svg{
                     @apply cursor-pointer w-8 h-8 hover:text-orange-500 transition duration-300 ease-in;
                 }

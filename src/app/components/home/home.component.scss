@@ -1,10 +1,10 @@
 .hero {
-  @apply flex justify-between items-center bg-neutral-900 px-32;
+  @apply flex justify-center sm:justify-between items-center bg-neutral-900 px-32 relative lg:static;
   .subtitle {
     @apply text-neutral-400 uppercase text-sm font-body tracking-[11px] pb-6;
   }
   .title {
-    @apply text-neutral-100 text-6xl font-bold uppercase font-body;
+    @apply text-neutral-100 md:text-6xl text-4xl font-bold uppercase font-body;
     span {
       @apply text-neutral-100 lowercase;
     }
@@ -13,37 +13,45 @@
   .description {
     @apply text-neutral-400 text-sm font-body py-8 max-w-md;
   }
+
+  .left{
+    @apply lg:z-0 z-10 text-center md:text-left
+  }
+
+  .right{
+    @apply lg:static absolute left-0
+  }
   img {
-    @apply object-cover max-w-lg;
+    @apply object-cover md:max-w-lg lg:z-0 -z-0 opacity-60 lg:opacity-100 max-w-[100vw];
   }
 }
 .detail-button {
-  @apply relative bg-orange-400  text-orange-50 font-bold py-4 px-6 max-w-fit uppercase text-sm cursor-pointer before:bg-white before:h-0 before:absolute before:w-full before:left-0 before:top-0 before:bg-opacity-20 hover:before:h-full before:transition-all before:duration-500 before:ease-in-out;
+  @apply sm:ml-0 ml-6 relative bg-orange-400  text-orange-50 font-bold py-4 px-6 max-w-fit uppercase text-sm cursor-pointer before:bg-white before:h-0 before:absolute before:w-full before:left-0 before:top-0 before:bg-opacity-20 hover:before:h-full before:transition-all before:duration-500 before:ease-in-out;
 }
 
 .highlight {
-  @apply flex overflow-hidden h-1/3 bg-[#D87D4A] mx-32 rounded-lg shadow-lg mb-8 items-center gap-8;
+  @apply flex sm:flex-row flex-col text-center sm:text-left overflow-hidden h-1/3 bg-[#D87D4A] md:mx-32 mx-4 rounded-lg shadow-lg mb-8 items-center gap-8;
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.com/svgjs' width='1440' height='560' preserveAspectRatio='none' viewBox='0 0 1440 560'%3e%3cg mask='url(%26quot%3b%23SvgjsMask1019%26quot%3b)' fill='none'%3e%3crect width='1440' height='560' x='0' y='0' fill='rgba(216%2c 125%2c 74%2c 1)'%3e%3c/rect%3e%3cpath d='M-241.11 421.74C-125.65 421.94-12.86 491.74 215.39 491.74 443.64 491.74 442.09 421.56 671.88 421.74 901.67 421.92 1006.08 594.96 1128.38 597.99' stroke='rgba(255%2c 247%2c 237%2c 0.2)' stroke-width='2'%3e%3c/path%3e%3cpath d='M-22.41 496.68C141.53 496.05 297.69 367.75 620.6 367.88 943.51 368.01 1091.28 612.55 1263.61 616.85' stroke='rgba(255%2c 247%2c 237%2c 0.2)' stroke-width='2'%3e%3c/path%3e%3cpath d='M-103.52 416.53C-2.12 416.79 96.24 486.53 295.99 486.53 495.75 486.53 494.31 416.36 695.51 416.53 896.7 416.7 986.92 579.23 1095.02 582.49' stroke='rgba(255%2c 247%2c 237%2c 0.2)' stroke-width='2'%3e%3c/path%3e%3cpath d='M-284.98 221.25C-185.47 221.52-89.07 291.25 106.85 291.25 302.76 291.25 289 216.21 498.67 221.25 708.34 226.29 758.71 563.18 890.5 590.71' stroke='rgba(255%2c 247%2c 237%2c 0.2)' stroke-width='2'%3e%3c/path%3e%3cpath d='M-115.73 506.32C9.43 497.41 98.69 253.92 318.33 254.32 537.97 254.72 609.48 614.61 752.39 641.3' stroke='rgba(255%2c 247%2c 237%2c 0.2)' stroke-width='2'%3e%3c/path%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask1019'%3e%3crect width='1440' height='560' fill='white'%3e%3c/rect%3e%3c/mask%3e%3c/defs%3e%3c/svg%3e");
   svg {
     @apply w-1/2 h-full relative left-0;
   }
   img {
-    @apply relative bottom-[-5rem] w-1/2;
+    @apply relative sm:bottom-[-5rem] bottom-[-1rem] w-1/2;
   }
   .title {
-    @apply text-orange-50 text-5xl font-black  uppercase font-body;
+    @apply text-orange-50 sm:text-5xl text-3xl font-black  uppercase font-body;
   }
   .description {
     @apply text-orange-50 text-sm font-body py-8 max-w-sm;
   }
 
   .detail-button-black {
-    @apply relative bg-black text-white font-bold py-4 px-6 max-w-fit uppercase text-sm cursor-pointer before:bg-white before:h-0 before:absolute before:w-full before:left-0 before:top-0 before:bg-opacity-20 hover:before:h-full before:transition-all before:duration-500 before:ease-in-out;
+    @apply  sm:ml-0 ml-[25%]  relative bg-black text-white font-bold py-4 px-6 max-w-fit uppercase text-sm cursor-pointer before:bg-white before:h-0 before:absolute before:w-full before:left-0 before:top-0 before:bg-opacity-20 hover:before:h-full before:transition-all before:duration-500 before:ease-in-out;
   }
 }
 
 .highlight-narrow {
-  @apply flex flex-row-reverse overflow-hidden h-1/3 bg-gray-300 mx-32 rounded-lg shadow-lg mb-8 items-center gap-8 justify-evenly;
+  @apply text-center sm:text-left flex flex-col justify-center  md:flex-row-reverse overflow-hidden h-1/3 bg-gray-300 md:mx-32 mx-4 rounded-lg shadow-lg mb-8 items-center gap-8 md:justify-evenly;
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.com/svgjs' width='1440' height='560' preserveAspectRatio='none' viewBox='0 0 1440 560'%3e%3cg mask='url(%26quot%3b%23SvgjsMask1034%26quot%3b)' fill='none'%3e%3crect width='1440' height='560' x='0' y='0' fill='rgba(209%2c 213%2c 219%2c 1)'%3e%3c/rect%3e%3cpath d='M 476%2c-571.5781703258948 C 559.2%2c-459.58 919.6%2c-235.58 892%2c-11.57817032589481 C 864.4%2c212.42 343.8%2c434.11 338%2c548.4218296741052 C 332.2%2c662.74 758%2c557.68 863%2c560' stroke='rgba(176%2c 179%2c 182%2c 0.58)' stroke-width='2'%3e%3c/path%3e%3cpath d='M 525%2c-511.73593604771776 C 598.4%2c-399.74 890.8%2c-175.74 892%2c48.26406395228222 C 893.2%2c272.26 536.6%2c505.92 531%2c608.2640639522822 C 525.4%2c710.61 797.4%2c569.65 864%2c560' stroke='rgba(176%2c 179%2c 182%2c 0.58)' stroke-width='2'%3e%3c/path%3e%3cpath d='M 929%2c-1062.9168622037148 C 819.8%2c-950.92 391.4%2c-726.92 383%2c-502.91686220371486 C 374.6%2c-278.92 898.6%2c-155.5 887%2c57.08313779628514 C 875.4%2c269.67 437.4%2c459.42 325%2c560' stroke='rgba(176%2c 179%2c 182%2c 0.58)' stroke-width='2'%3e%3c/path%3e%3cpath d='M 278%2c-270.1079741980328 C 419.2%2c-158.11 903.4%2c65.89 984%2c289.8920258019672 C 1064.6%2c513.89 693%2c795.87 681%2c849.8920258019672 C 669%2c903.91 875.4%2c617.98 924%2c560' stroke='rgba(176%2c 179%2c 182%2c 0.58)' stroke-width='2'%3e%3c/path%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask1034'%3e%3crect width='1440' height='560' fill='white'%3e%3c/rect%3e%3c/mask%3e%3c/defs%3e%3c/svg%3e");
 
   img {
@@ -57,18 +65,18 @@
   }
 
   .detail-button-black {
-    @apply relative bg-black text-white font-bold py-4 px-6 max-w-fit uppercase text-sm cursor-pointer before:bg-white before:h-0 before:absolute before:w-full before:left-0 before:top-0 before:bg-opacity-20 hover:before:h-full before:transition-all before:duration-500 before:ease-in-out;
+    @apply sm:ml-0 ml-[25%]  relative bg-black text-white font-bold py-4 px-6 max-w-fit uppercase text-sm cursor-pointer before:bg-white before:h-0 before:absolute before:w-full before:left-0 before:top-0 before:bg-opacity-20 hover:before:h-full before:transition-all before:duration-500 before:ease-in-out;
   }
 }
 
 .highlight-pills {
-  @apply flex justify-between mx-32 gap-8 mb-8;
+  @apply flex sm:flex-row flex-col justify-center sm:justify-between md:mx-32 mx-4 gap-8 mb-8;
   .image-pill {
-    @apply relative w-1/2 max-h-64 rounded-lg overflow-hidden;
+    @apply relative sm:w-1/2 max-h-64 rounded-lg overflow-hidden;
   }
 
   .pill {
-    @apply bg-gray-300 rounded-lg flex flex-col justify-center items-center px-4 py-4 w-1/2;
+    @apply bg-gray-300 rounded-lg flex flex-col justify-center items-center px-4 py-4 sm:w-1/2 text-center sm:text-left;
     .title {
       @apply text-neutral-700 text-3xl font-bold  uppercase font-body mb-4;
     }

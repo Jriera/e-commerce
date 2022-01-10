@@ -4,25 +4,25 @@ $bounce: cubic-bezier(0.68, -0.55, 0.27, 1.55);
 }
 
 .back {
-  @apply mb-12 max-w-[21rem] font-body text-lg text-gray-400 cursor-pointer px-32 no-underline relative before:absolute before:bg-orange-700 before:w-0 before:h-[2px] before:bottom-0 hover:before:w-[4.5rem] before:transition-all before:duration-500 before:ease-in-out;
+  @apply mb-12 max-w-[21rem] font-body text-lg text-gray-400 cursor-pointer px-4 md:px-32 no-underline relative before:absolute before:bg-orange-700 before:w-0 before:h-[2px] before:bottom-0 hover:before:w-[4.5rem] before:transition-all before:duration-500 before:ease-in-out;
 }
 
 .product-detail {
-  @apply px-32; //side gutter
+  @apply md:px-32 px-4; //side gutter
 
   .product {
-    @apply flex justify-evenly flex-row mb-32;
+    @apply flex md:flex-row flex-col justify-evenly mb-32;
     .img-wrapper {
-      @apply w-1/2 flex justify-center items-center bg-gray-200 rounded py-16;
+      @apply md:w-1/2 flex justify-center items-center bg-gray-200 rounded py-16 mb-8 md:mb-0;
       img {
-        @apply lg:max-h-64 object-cover; //setting product image size
+        @apply lg:max-h-64 object-cover ; //setting product image size
       }
     }
     .product-info {
-      @apply flex justify-center flex-col w-1/2 ml-32; 
+      @apply flex justify-center flex-col md:w-1/2 md:ml-32; 
 
       h3 {
-        @apply font-bold text-4xl mb-8;
+        @apply font-bold text-2xl md:text-4xl mb-8;
       }
       p {
         @apply lg:max-h-96 line-clamp-3 mb-6 text-gray-400 text-sm;
@@ -32,7 +32,7 @@ $bounce: cubic-bezier(0.68, -0.55, 0.27, 1.55);
         @apply font-bold text-xl mb-8 text-neutral-900;
       }
       .into-cart{
-        @apply flex items-center justify-start font-body;
+        @apply flex items-center md:justify-start justify-center font-body;
         .quantity-button{
           @apply bg-gray-200 py-4 px-6 hover:text-orange-500 cursor-pointer font-bold text-lg text-gray-400;
         }
@@ -48,17 +48,17 @@ $bounce: cubic-bezier(0.68, -0.55, 0.27, 1.55);
   } //end product
 
   .product-features{
-      @apply flex mb-32;
+      @apply flex md:flex-row flex-col md:text-left  justify-center md:justify-evenly mb-32 items-center;
       h3{
-        @apply font-bold text-3xl mb-8 uppercase;
+        @apply font-bold text-3xl mb-8 uppercase text-center;
       } 
 
       .features{
-          @apply mr-12 w-4/5
+          @apply mr-0 md:mr-12 md:w-4/5 text-center mb-8 md:mb-0;
       }
 
       .contents{
-          @apply ml-12 w-3/5;
+          @apply ml-0 md:ml-12 md:w-3/5;
           span {
             @apply font-bold font-body text-orange-500 mr-6;
           }
@@ -66,16 +66,16 @@ $bounce: cubic-bezier(0.68, -0.55, 0.27, 1.55);
   }//end of product features
 }//end product detail
 .recommended{
-  @apply px-32;
+  @apply md:px-32 px-4; 
   h3{
     @apply font-bold text-3xl mb-8 uppercase text-center;
   }
 }
 .recommended-elements{
-  @apply flex flex-row mb-32 items-center justify-center gap-8;
+  @apply flex md:flex-row flex-col mb-32 items-center justify-center md:gap-8;
 
   .element{
-    @apply flex flex-col justify-center items-center w-1/3;
+    @apply flex flex-col justify-center items-center md:w-1/3;
     
     .img-wrapper {
       @apply w-full h-full flex justify-center items-center min-h-full bg-gray-200 m-4 py-4;
