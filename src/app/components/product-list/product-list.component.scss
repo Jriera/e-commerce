@@ -5,23 +5,23 @@
 
 
 .product-list{
-    @apply px-32; //side gutter
+    @apply md:px-32 px-4; //side gutter
     .product{
-      @apply flex justify-evenly flex-row mb-32;
+      @apply flex md:justify-evenly md:flex-row flex-col mb-32;
       .img-wrapper{
-          @apply w-1/2 flex justify-center items-center bg-gray-200 rounded py-16 mx-6;
+          @apply md:w-1/2 flex justify-center items-center bg-gray-200 rounded py-16 md:mx-6 mb-6 md:mb-0;
           img{
               @apply lg:max-h-64 object-cover;//setting product image size
           }
       }
       .product-info{
-        @apply flex justify-start flex-col w-1/2 ml-32;//setting even child spacing
+        @apply flex justify-start flex-col md:w-1/2 md:ml-16 text-center md:text-left;//setting even child spacing
     
         h3{
             @apply font-bold text-4xl mb-8;
         }
         p{
-            @apply lg:max-h-96 line-clamp-3 mb-6 text-gray-400 text-sm;
+            @apply lg:max-h-96 line-clamp-3 mb-6 text-gray-400 text-sm text-left;
             
         }
     
@@ -31,9 +31,9 @@
     }
     }
     .reversed{
-      @apply flex justify-evenly flex-row-reverse;
+      @apply flex justify-evenly md:flex-row-reverse;
       .product-info{
-          @apply ml-0 mr-32;//overrides the ml-32 from the even child spacing
+          @apply ml-0 md:mr-16;//overrides the ml-32 from the even child spacing
       }
   }
     

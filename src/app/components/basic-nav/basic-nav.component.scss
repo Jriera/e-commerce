@@ -1,12 +1,12 @@
 nav{
-    @apply flex lg:flex-row items-center justify-center lg:justify-between lg:py-10 bg-neutral-900 lg:px-32 font-body border-b-[1px] border-b-neutral-600 lg:w-full w-screen;
+    @apply flex  md:flex-row items-center justify-between md:justify-between px-4 md:py-10 bg-neutral-900 md:px-32 font-body border-b-[1px] border-b-neutral-600 md:w-full w-screen;
 
     .logo{
-        @apply text-gray-300 font-display text-4xl cursor-pointer text-center lg:text-left;
+        @apply text-gray-300 font-display text-4xl cursor-pointer text-center md:text-left;
     }
 
     .menus{
-        @apply  justify-center text-gray-300  text-sm uppercase font-bold gap-10 hidden lg:flex;
+        @apply  justify-center text-gray-300  text-sm uppercase font-bold gap-10 hidden md:flex;
         div{
             @apply mr-4 hover:text-orange-500 transition duration-300 ease-in cursor-pointer;
         }
@@ -14,7 +14,7 @@ nav{
     .cart{
         @apply relative;
         img{
-            @apply cursor-pointer py-2;
+            @apply cursor-pointer py-2 mb-4 md:mb-auto;
         }
         .cart-quantity{
             @apply absolute top-0 -right-1 text-orange-50 text-xs font-bold bg-orange-500 px-1 rounded-full;
@@ -33,11 +33,11 @@ nav{
 }
 
 .user-nav{
-    @apply lg:flex flex-row items-center justify-between gap-10 py-2 text-neutral-100 bg-zinc-900 border-0 hidden;
+    @apply hidden lg:flex flex-row items-center justify-between gap-10 py-2 text-neutral-100 bg-zinc-900 border-0;
     
         @apply text-xs capitalize flex flex-row items-center gap-2 justify-between;
         .welcome{
-            @apply flex items-center cursor-pointer;
+            @apply md:flex items-center cursor-pointer hidden justify-center ;
 
             p{
                 @apply mr-2
@@ -51,12 +51,17 @@ nav{
 
         .profile{
             img, mat-icon{
-                @apply rounded-full w-6 mr-3;
+                @apply rounded-full w-6 h-6 mr-3;
             }
         }
     
 }
 
 section{
-     @apply hidden lg:flex;
+     @apply  lg:flex;
     }
+.menu-toggle{
+    @apply cursor-pointer md:hidden text-gray-300;
+}
+
+
