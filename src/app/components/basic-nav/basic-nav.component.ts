@@ -7,6 +7,8 @@ import { FirebaseService } from 'src/app/services/firebase.service';
 import { UrlParamsService } from 'src/app/services/url-params.service';
 import { AuthComponent } from '../auth/auth.component';
 import { CartComponent } from '../cart/cart.component';
+import { DepartmentsComponent } from '../departments/departments.component';
+
 
 @Component({
   selector: 'app-basic-nav',
@@ -44,6 +46,15 @@ export class BasicNavComponent implements OnInit {
     this.mDialog.open(CartComponent, {
       width: '400px',
       height: '600px',
+      backdropClass: 'backdrop',
+    });
+  }
+
+  openHamburger() {
+    // opens the hamburger menu
+    this.mDialog.open(DepartmentsComponent, {
+      width: '100vw',
+      height: '100vh',
       backdropClass: 'backdrop',
     });
   }
@@ -86,6 +97,7 @@ export class BasicNavComponent implements OnInit {
     //gets the current logged in user
     this.firebaseService.user$.subscribe((user) => {
       this.user = user;
+      console.log(user?.photoURL)
     });
   }
 
