@@ -2,6 +2,7 @@
 
 
 <nav>
+    <mat-icon class="menu-toggle" (click)='openHamburger()'>menu</mat-icon>
     <div class="logo" routerLink="">Shopaholic</div>
     <div class="menus">
         <div routerLink="" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Home</div>
@@ -17,7 +18,8 @@
 
                 <p><span> {{user.displayName ?? user.email}}</span></p>
                 <div class="profile">
-                    <img src="{{user.photoURL}}" alt="" >
+                    <img src="{{user.photoURL}}" alt="" referrerpolicy="no-referrer">
+                    
                     <mat-menu #menu="matMenu" xPosition="before">
                         <button mat-menu-item>Profile</button>
                         <button mat-menu-item (click)="signOut()">Sign out</button>
