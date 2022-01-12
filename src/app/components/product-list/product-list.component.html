@@ -1,4 +1,24 @@
-
+<section *ngIf="productList.length===0" class="loading-image"> <!-- It only shows when products is empty -->
+    <!-- generated loader using online resources -->
+        <div class="loadingio-spinner-spinner-7lpuls74m78">
+            <div class="ldio-dcuowe6ogia">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    
+    
+    </section>
 
 <ng-container *ngIf="productList.length!=0">
     <div class="product-list" *ngFor='let product of productList;let i = index'>
@@ -20,24 +40,4 @@
 
 
 
-<section *ngIf="productList.length===0" class="loading-image"> <!-- It only shows when products is empty -->
-<!-- generated loader using online resources -->
-    <div class="loadingio-spinner-spinner-7lpuls74m78">
-        <div class="ldio-dcuowe6ogia">
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
-    </div>
 
-
-</section>
