@@ -1,16 +1,50 @@
 <nav>
+    <mat-icon class="menu-toggle" (click)='openHamburger()'>menu</mat-icon>
     <div class="logo" routerLink="">Shopaholic</div>
     <div class="menus">
-        <div routerLink="" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" (click)="getCategory()">Home</div>
-        <div routerLink="/clothing" routerLinkActive="active" (click)="expander();getCategory()">Clothing</div>
-        <div  routerLink="/electronics" routerLinkActive="active" (click)="expander();getCategory()">Electronics</div>
-        <div routerLink="/jewelery" routerLinkActive="active" (click)="expander();getCategory()">Jewellery</div>
+        <div routerLink="" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Home</div>
+        <div routerLink="/clothing" routerLinkActive="active">Clothing</div>
+        <div routerLink="/electronics" routerLinkActive="active">Electronics</div>
+        <div routerLink="/jewelery" routerLinkActive="active">Jewellery</div>
     </div>
-    <div class="cart">
-        <div  class="cart-quantity" *ngIf="items > 0" >{{items$ |async}}</div>
-        <img (click)="openCart()" src="/assets/icons/icon-cart.svg" alt="">
-       
-    </div>
+
+    <section>
+        <div class="user-nav" *ngIf="user!==null">
+
+            <div class="welcome" [matMenuTriggerFor]="menu">
+
+                <p><span> {{user.displayName ?? user.email}}</span></p>
+                <div class="profile">
+                    <img src="{{user.photoURL}}" alt="" referrerpolicy="no-referrer">
+                    
+                    <mat-menu #menu="matMenu" xPosition="before">
+                        <button mat-menu-item>Profile</button>
+                        <button mat-menu-item (click)="signOut()">Sign out</button>
+                    </mat-menu>
+
+                </div>
+            </div>
+        </div>
+        <div class="user-nav" *ngIf="user===null">
+
+            <div class="welcome">
+
+                <p><span (click)="openLogin()">login</span></p>
+                <div class="profile">
+                    <mat-icon >account_circle</mat-icon>
+                    
+                    
+
+                </div>
+            </div>
+        </div>
+
+
+        <div class="cart">
+            <div class="cart-quantity" *ngIf="items > 0">{{items$ |async}}</div>
+            <img (click)="openCart()" src="/assets/icons/icon-cart.svg" alt="">
+        </div>
+    </section>
 </nav>
 <header [@expandContract]="expand?'expanded':'contracted'" >
     <div>
