@@ -1,7 +1,7 @@
 
 
 .container{
-    @apply flex px-32  font-body bg-neutral-100 gap-8 pt-32;
+    @apply flex flex-col md:flex-row px-4 md:px-32  font-body bg-neutral-100 gap-8 pt-32;
     form{
         @apply bg-white rounded p-12 min-w-[65%];
         h2{
@@ -18,7 +18,7 @@
         }
 
         .input-block{
-            @apply flex flex-col gap-4 col-span-2 mb-5;
+            @apply flex flex-col gap-4 col-span-4 md:col-span-2 mb-5;
             label{
                 @apply text-sm font-bold;
             }
@@ -34,7 +34,7 @@
         }
 
         .even{
-            @apply col-start-3;
+            @apply md:col-start-3;
         }
         .address{
             @apply col-span-4
