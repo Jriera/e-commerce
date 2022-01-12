@@ -1,17 +1,17 @@
 .store-info{
-    @apply flex sm:flex-row flex-col-reverse md:mx-32 mx-4 gap-8 items-center font-body;
+    @apply flex sm:flex-row flex-col-reverse lg:mx-32 mx-4 gap-8 items-center font-body;
     .store-detail{
-        @apply md:w-1/2 text-center md:text-left;
+        @apply lg:w-1/2 text-center lg:text-left;
 
         .info-title{
-            @apply md:text-4xl text-2xl font-bold uppercase mb-8;
+            @apply lg:text-4xl text-2xl font-bold uppercase mb-8;
             span{
                 @apply text-orange-500;
             }
         }
 
         .info-description{
-            @apply text-gray-500 text-justify md:text-left;
+            @apply text-gray-500 text-justify lg:text-left;
         }
     }
     img{
