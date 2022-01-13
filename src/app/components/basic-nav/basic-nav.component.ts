@@ -9,7 +9,6 @@ import { AuthComponent } from '../auth/auth.component';
 import { CartComponent } from '../cart/cart.component';
 import { DepartmentsComponent } from '../departments/departments.component';
 
-
 @Component({
   selector: 'app-basic-nav',
   templateUrl: './basic-nav.component.html',
@@ -97,7 +96,6 @@ export class BasicNavComponent implements OnInit {
     //gets the current logged in user
     this.firebaseService.user$.subscribe((user) => {
       this.user = user;
-      console.log(user?.photoURL)
     });
   }
 
