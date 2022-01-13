@@ -36,6 +36,7 @@ import { provideDatabase,getDatabase } from '@angular/fire/database';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { ProfileComponent } from './components/profile/profile.component';
 
 
 
@@ -63,6 +64,7 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
     CheckoutComponent,
     InputErrorPrinterComponent,
     AuthComponent,
+    ProfileComponent,
     
     
     
