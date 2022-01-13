@@ -1,8 +1,8 @@
 export interface User {
-    uid: string;
-    email: string|null;
-    photoURL?: string | null;
-    displayName?: string | null;
+    uid: string|undefined;
+    email: string|null|undefined;
+    photoURL?: string | null|undefined;
+    displayName?: string | null|undefined;
     myCustomData?: string;
     admin?: boolean;
     isAnonymous?: boolean | null;
