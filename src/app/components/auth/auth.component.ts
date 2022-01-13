@@ -1,9 +1,11 @@
+import { ThisReceiver } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 
 import { FormBuilder, Validators } from '@angular/forms';
 
 import { GoogleAuthProvider } from 'firebase/auth';
+import { User } from 'src/app/models/user';
 import { FirebaseService } from 'src/app/services/firebase.service';
 
 @Component({
@@ -21,6 +23,7 @@ export class AuthComponent implements OnInit {
 
   ngOnInit(): void {
     this.getGoogleResult();
+    this.currentUser();
   }
 
   signUpForm = this.fb.group({
@@ -34,20 +37,11 @@ signup(email:string,password:string){
   }
 login(email:string,password:string){
     this.firebaseService.emailSignIn(email,password);
+    
 }
 
 
-/* signin(email:string,password:string){
-  this.auth.signInWithEmailAndPassword(email,password)
-  .then(userCredential=>{
-    const user = userCredential.user;
-   
-    console.log(user);
-  })
-  .catch(err=>{
-    console.log(err);
-  })
-} */
+
 
 googleLogin(){
   this.firebaseService.googleLoginRedirect();
@@ -58,34 +52,22 @@ async getGoogleResult(){
   console.log(result);
 }
 
-/* googleLogin(){
-  const provider = new GoogleAuthProvider();
-  this.auth.signInWithPopup(provider)
-  .then(result=>{
-    if (result.credential) {
-      // @type {firebase.auth.OAuthCredential} 
-      var credential:any = result.credential;
 
-      // This gives you a Google Access Token. You can use it to access the Google API.
-      var token = credential.accessToken;
-      // ...
-    }
-    
-    console.log(result);
-    console.log(token)
-  })
-  .catch(err=>{
-    console.log(err);
-  })
-} */
 
 
 
 currentUser(){
   this.auth.onAuthStateChanged(user=>{
     console.log(user);
+    
+    
   });
+
+
+
 }
+
+
 
 
 }
