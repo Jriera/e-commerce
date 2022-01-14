@@ -19,7 +19,8 @@
     <h3 class="total-title">total</h3>
     <p class="total-value">{{cartTotal | currency:'EUR':'symbol-narrow'}}</p>
 </div>
-<div class="check-out" routerLink="/checkout" (click)="closeDialog()">checkout</div>
+<div *ngIf="!isCheckoutRoute()" class="check-out" routerLink="/checkout" (click)="closeDialog()">checkout</div>
+<button *ngIf="isCheckoutRoute()" class="check-out"  (click)="checkout()" [disabled]="formValidity==='false'" >Continue</button>
 
 
 
