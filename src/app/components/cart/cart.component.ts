@@ -1,8 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Product } from 'src/app/models/product';
 import { CartService } from 'src/app/services/cart.service';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
+import { Order } from 'src/app/models/order';
+import { FirebaseService } from 'src/app/services/firebase.service';
+import { User } from 'src/app/models/user';
 
 @Component({
   selector: 'app-cart',
@@ -15,7 +19,15 @@ export class CartComponent implements OnInit {
   cartItems:Product[] = [];
   cartTotal:number = 0;
 
-  constructor(private cartService:CartService,private mDialog:MatDialog) { }
+  @Input() formValidity = 'false';
+
+  constructor(
+              private cartService:CartService,  
+              private mDialog:MatDialog,
+              private router:Router,
+              private fbService:FirebaseService
+              ) { }
+           
 
   ngOnInit(): void {
     this.cartItems$ = this.cartService.getCart();
@@ -47,6 +59,32 @@ export class CartComponent implements OnInit {
 
   closeDialog(){
     this.mDialog.closeAll();
+  }
+  isCheckoutRoute() {
+    if(this.router.url === '/checkout' ){
+    return true;
+    } else{
+      return false;
+    }
+    
+  }
+
+  insertOrder(userUID:string|null,order:Order){
+    this.fbService.addOrder(userUID,order);
+  }
+
+  checkout(){
+    this.router.navigate(['/profile']);
+    const order:Order = {
+      date: new Date(),
+      cart: [...this.cartItems],
+      total: this.cartTotal,
+      userUid:this.fbService.currentUserUID,
+      status: 'pending'
+    }
+    this.insertOrder(this.fbService.currentUserUID,order);
+    console.log(order);
+
   }
 }
    
