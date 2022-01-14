@@ -17,6 +17,7 @@ import { switchMap, map, expand } from 'rxjs/operators';
 
 //interface imports
 import { User } from '../models/user';
+import { Order } from '../models/order';
 
 @Injectable({
   providedIn: 'root',
@@ -159,5 +160,13 @@ export class FirebaseService {
       console.log(user);
       return user;
     });
+  }
+
+  addOrder(userUID: string|null, order:Order) {
+    //this function is used to add a new order document to the users collection in firestore
+    const userRef: AngularFirestoreDocument<Order> = this.ngfs.doc(
+      `orders/${userUID}`
+    );
+    userRef.set({ ...order });
   }
 }
