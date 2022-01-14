@@ -1,6 +1,6 @@
 <div class="container">
 
-    <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
+    <form [formGroup]="checkoutForm" >
         <h2>checkout</h2>
         <div class="form-block">
             <h3>Billing Details</h3>
@@ -17,6 +17,11 @@
                     <app-input-error-printer [control]="checkoutForm.controls['email']"></app-input-error-printer>
                 </div>
                 <div class="input-block">
+                    <label for="password">Your Password: </label>
+                    <input formControlName='password' placeholder='Your password'>
+                    <app-input-error-printer [control]="checkoutForm.controls['password']"></app-input-error-printer>
+                </div>
+                <div class="input-block even">
                     <label for="phone">Phone Number: </label>
                     <input formControlName='phone' placeholder="+34 123 456 789">
                     <app-input-error-printer [control]="checkoutForm.controls['phone']"></app-input-error-printer>
@@ -91,7 +96,7 @@
     </form>
 
 
-    <app-cart></app-cart>
+    <app-cart [formValidity]="formValidity"></app-cart>
 
 
 </div>
