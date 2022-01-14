@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { FormBuilder,Validators } from '@angular/forms';
+import { FormBuilder,FormGroup,Validators } from '@angular/forms';
 import { creditCardValidator } from '../../directives/credit-card-validator.directive';
+
 
 
 @Component({
@@ -10,25 +11,29 @@ import { creditCardValidator } from '../../directives/credit-card-validator.dire
   styleUrls: ['./checkout.component.scss']
 })
 export class CheckoutComponent implements OnInit {
+  
+  
+  formValidity = 'false';
 
   constructor( 
     private activatedRoute:ActivatedRoute,
     private fb:FormBuilder
-    ) { }
+    ) { 
+      
+    }
     
 
   ngOnInit(): void {
-    
+    this.isValid();
+
   }
 
-  ngAfterViewInit(){
-    console.log(this.checkoutForm.controls['cardNumber'].value);
-    console.log(this.checkoutForm.controls['cardNumber'].errors);
-  }
+  
 
   checkoutForm = this.fb.group({
     name:['',Validators.required],
     email:['',[Validators.required,Validators.email]],
+    password:['',Validators.required],
     phone:['',Validators.required],
     
     address:['',Validators.required],
@@ -37,18 +42,25 @@ export class CheckoutComponent implements OnInit {
     country:['',Validators.required],
    
     
-    cardNumber:['',[Validators.required,creditCardValidator(/^\d{16}$/)]],
-    cardName:['',Validators.required],
+    cardNumber:['',[Validators.required,Validators.pattern(/^\d{16}$/)]],
     cardExpiry:['',Validators.required],
-    cardCvc:['',[Validators.required,creditCardValidator(/^\d{3}$/)]],
+    cardCvc:['',[Validators.required,Validators.pattern(/^\d{3}$/)]],
     
   })
+
+  isValid(){
+    this.checkoutForm.statusChanges.subscribe(status => {
+      this.formValidity = status ;
+    });
+
+  }
 
   onSubmit(){
     console.log(this.checkoutForm.value);
     console.log(this.checkoutForm.valid);
   } 
 
+  
 
 
   
