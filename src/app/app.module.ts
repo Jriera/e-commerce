@@ -37,6 +37,7 @@ import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { ProfileComponent } from './components/profile/profile.component';
+import { OrdersComponent } from './components/orders/orders.component';
 
 
 
@@ -65,6 +66,7 @@ import { ProfileComponent } from './components/profile/profile.component';
     InputErrorPrinterComponent,
     AuthComponent,
     ProfileComponent,
+    OrdersComponent,
     
     
     
