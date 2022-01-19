@@ -2,9 +2,10 @@ import { Product } from "./product";
 import { User } from "./user";
 
 export interface Order{
+    id?:number;
     cart: Product[];
-    total: number;
-    date: Date;
-    userUid: User["uid"] | null;
-    status: string;
+    totalPrice: number;
+    orderDate: Date;
+    userId: string | null;
+    orderStatus: string;
 }
