@@ -1,19 +1,12 @@
 //angular imports
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
 
 //firebase imports
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import {
-  AngularFirestore,
-  AngularFirestoreCollection,
-  AngularFirestoreDocument,
-} from '@angular/fire/compat/firestore';
-import { GoogleAuthProvider, onAuthStateChanged } from '@angular/fire/auth';
+import { GoogleAuthProvider } from '@angular/fire/auth';
 
 //rxJS imports
-import { BehaviorSubject, Observable, of } from 'rxjs';
-import { switchMap, map, expand } from 'rxjs/operators';
+import { BehaviorSubject } from 'rxjs';
 
 //interface imports
 import { User } from '../models/user';
@@ -23,7 +16,7 @@ import { Order } from '../models/order';
   providedIn: 'root',
 })
 export class FirebaseService {
-  constructor(private ngfa: AngularFireAuth, private ngfs: AngularFirestore) {
+  constructor(private ngfa: AngularFireAuth) {
     this.authStatusUpdate();
     this.redirectResult();
   }
@@ -36,6 +29,7 @@ export class FirebaseService {
   userSubject = new BehaviorSubject(this.currentUser);
   user$ = this.userSubject.asObservable(); //we create an observable that will be used to watch for changes in the current user
 
+  orders: Order[] | undefined = undefined;
   authStatusUpdate() {
     //this function is used to update the login status of the user and is called in the service constructor
     this.ngfa.onAuthStateChanged((user) => {
@@ -62,7 +56,6 @@ export class FirebaseService {
           isAnonymous: false,
           phoneNumber: '',
         };
-        this.addUser(user); //we add the user to the users collection in firestore
       }
 
       return result.user;
@@ -106,12 +99,9 @@ export class FirebaseService {
           isAnonymous: false,
           phoneNumber: '',
         };
-        this.addUser(fsUser); //we add the user to the users collection in firestore
       }
       console.log(user);
       return user;
-
-      
     } catch (err) {
       console.log(err);
       return err;
@@ -134,39 +124,5 @@ export class FirebaseService {
   signOut() {
     //this function is used to sign out a user
     this.ngfa.signOut();
-  }
-
-  //TODO: extend the user functionality by adding custom datafields, such as admin status. In order to do so we will need to create a new user document in firestore and add the custom datafields to it. The user document will be created in the following way:
-  //TODO 1. Create a new user document in firestore
-  //TODO 2. Add the custom datafields to the user document
-  //TODO 3. Add the user document to the users collection in firestore
-  //TODO 4. Add the user document to the current user document in firestore
-  //TODO The relation between the user document and the firebase user is done by the uid which will be common and used as a kind of Foreign Key.
-
-  addUser(user: User) {
-    //this function is used to add a new user document to the users collection in firestore
-    const userRef: AngularFirestoreDocument<User> = this.ngfs.doc(
-      `users/${user.uid}`
-    );
-    userRef.set({ ...user }, { merge: true });
-  }
-
-  getUser(uid: string) {
-    //this function is used to get a user document from the users collection in firestore
-    const userRef: AngularFirestoreDocument<User> = this.ngfs.doc(
-      `users/${uid}`
-    );
-    userRef.valueChanges().subscribe((user) => {
-      console.log(user);
-      return user;
-    });
-  }
-
-  addOrder(userUID: string|null, order:Order) {
-    //this function is used to add a new order document to the users collection in firestore
-    const userRef: AngularFirestoreDocument<Order> = this.ngfs.doc(
-      `orders/${userUID}`
-    );
-    userRef.set({ ...order });
   }
 }
