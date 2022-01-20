@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AdminComponent } from './components/admin/admin.component';
 import { AuthComponent } from './components/auth/auth.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { HomeComponent } from './components/home/home.component';
@@ -10,6 +11,7 @@ import { LoggedGuardGuard } from './logged-guard.guard';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
+  {path: 'admin', component: AdminComponent},
   {path:'checkout', component:CheckoutComponent},
   {path:'auth', component:AuthComponent},
   {path:'profile', component:ProfileComponent,canActivate:[LoggedGuardGuard]},
