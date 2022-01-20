@@ -19,6 +19,13 @@ export class AdminComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  ngAfterContentChecked() {
+    this.getOrders();
+    if (this.userOrders.length > 0) {
+      this.ordersSub.unsubscribe();
+    }
+  }
+
   getOrders() {
     if (this.fb.currentUserUID) {
       this.ordersSub = this.oHttp
