@@ -38,6 +38,7 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { ProfileComponent } from './components/profile/profile.component';
 import { OrdersComponent } from './components/orders/orders.component';
+import { AdminComponent } from './components/admin/admin.component';
 
 
 
@@ -67,6 +68,7 @@ import { OrdersComponent } from './components/orders/orders.component';
     AuthComponent,
     ProfileComponent,
     OrdersComponent,
+    AdminComponent,
     
     
     
