@@ -10,8 +10,8 @@ export class OrderHttpService {
 
   constructor(private http:HttpClient) { }
 
-  getOrders(){
-    return this.http.get('https://nest-commerce-api.herokuapp.com/orders');
+  getOrders():Observable<Order[]>{
+    return this.http.get<Order[]>('https://nest-commerce-api.herokuapp.com/orders');
   }
 
   getOrdersByUserId(userId:string):Observable<Order[]>{
