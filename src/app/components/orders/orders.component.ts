@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Order } from 'src/app/models/order';
 
 @Component({
-  selector: 'app-orders',
+  selector: 'app-orders-display',
   templateUrl: './orders.component.html',
   styleUrls: ['./orders.component.scss']
 })

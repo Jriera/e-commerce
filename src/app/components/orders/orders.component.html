@@ -1,3 +1,40 @@
+<div *ngFor="let order of userOrders">
+    <div class="card">
+        <div class="card-header">
+        <div class="row">
+            <div class="col-md-6">
+            <h5>Order ID: {{order.id}}</h5>
+            </div>
+            <div class="col-md-6">
+            <h5>Order Date: {{order.orderDate}}</h5>
+            </div>
+        </div>
+        </div>
+        <div class="card-body">
+        <div class="row">
+            <div class="col-md-6">
+            <h5>Order Status: {{order.orderStatus}}</h5>
+            </div>
+            <div class="col-md-6">
+            <h5>Order Total: {{order.totalPrice | currency:'EUR':'symbol-narrow'}}</h5>
+            </div>
+        </div>
+        <div class="cart">
+            <div class="col-md-12">
+            <h5>Order Items:</h5>
+            <div *ngFor="let item of order.cart">
+                <div class="cart-row">
+                <div class="col-md-6">
+                    <h5>Item Name: {{item.title}}</h5>
+                </div>
+                <div class="col-md-6">
+                    <h5>Item Price: {{item.price | currency:'EUR':'symbol-narrow'}}</h5>
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
+        </div>
+    </div>
+</div> 
 
-
-<app-orders [userOrders]="userOrders"></app-orders>
