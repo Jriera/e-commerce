@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 import { Order } from 'src/app/models/order';
 import { FirebaseService } from 'src/app/services/firebase.service';
 import { User } from 'src/app/models/user';
+import { OrderHttpService } from 'src/app/services/order-http.service';
 
 @Component({
   selector: 'app-cart',
@@ -25,8 +26,10 @@ export class CartComponent implements OnInit {
               private cartService:CartService,  
               private mDialog:MatDialog,
               private router:Router,
-              private fbService:FirebaseService
+              private fbService:FirebaseService,
+              private oHttpService:OrderHttpService
               ) { }
+              
            
 
   ngOnInit(): void {
@@ -69,21 +72,32 @@ export class CartComponent implements OnInit {
     
   }
 
-  insertOrder(userUID:string|null,order:Order){
-    this.fbService.addOrder(userUID,order);
+  insertOrder(order:Order){
+    try {
+      this.oHttpService.saveOrder(order).subscribe(
+        (data)=>{
+          console.log(data);
+        });
+        this.cartService.clearCart();
+    }
+    catch (error) {
+      console.log(error);
+    }
+
   }
+   
 
   checkout(){
     this.router.navigate(['/profile']);
     const order:Order = {
-      date: new Date(),
-      cart: [...this.cartItems],
-      total: this.cartTotal,
-      userUid:this.fbService.currentUserUID,
-      status: 'pending'
+      orderDate: new Date(),
+      cart: {...this.cartItems},
+      totalPrice: this.cartTotal,
+      userId:this.fbService.currentUserUID,
+      orderStatus: 'pending'
     }
-    this.insertOrder(this.fbService.currentUserUID,order);
-    console.log(order);
+    this.insertOrder(order);
+    console.log(order.cart);
 
   }
 }
