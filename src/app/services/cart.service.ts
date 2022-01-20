@@ -58,6 +58,12 @@ export class CartService {
    this.cart$=of(this.cart);
     this.itemsInCart.next(this.cart.length);
   }
+
+  clearCart() {
+    this.cart = [];
+    this.cart$=of(this.cart);
+    this.itemsInCart.next(this.cart.length);
+  }
 }
             
             
