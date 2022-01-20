@@ -17,7 +17,7 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  ngAfterViewChecked() {
+  ngAfterContentChecked() {
     this.getOrders();
     if (this.userOrders.length > 0) {
       this.ordersSub.unsubscribe();
