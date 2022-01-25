@@ -8,6 +8,7 @@ import { Order } from 'src/app/models/order';
 import { FirebaseService } from 'src/app/services/firebase.service';
 import { User } from 'src/app/models/user';
 import { OrderHttpService } from 'src/app/services/order-http.service';
+import { UserHttpService } from 'src/app/services/user-http.service';
 
 @Component({
   selector: 'app-cart',
@@ -21,14 +22,20 @@ export class CartComponent implements OnInit {
   cartTotal:number = 0;
 
   @Input() formValidity = 'false';
+  @Input() email:string = '';
+  @Input() password:string = '';
+  @Input() name:string = '';
+  
 
   constructor(
               private cartService:CartService,  
               private mDialog:MatDialog,
               private router:Router,
               private fbService:FirebaseService,
-              private oHttpService:OrderHttpService
+              private oHttpService:OrderHttpService,
+              private uHttpService:UserHttpService
               ) { }
+              
               
            
 
@@ -85,6 +92,18 @@ export class CartComponent implements OnInit {
     }
 
   }
+
+  insertUser(user:User){
+    try {
+      this.uHttpService.saveUser(user).subscribe(
+        (data)=>{
+          console.log(data);
+        });
+    }
+    catch (error) {
+      console.log(error);
+    }
+  }
    
 
   checkout(){
@@ -96,14 +115,39 @@ export class CartComponent implements OnInit {
       userId:this.fbService.currentUserUID,
       orderStatus: 'pending'
     }
-    this.insertOrder(order);
+    
+    
+    
+    this.fbService.emailSignUp(this.email,this.password);
+    
+
+    this.fbService.user$.subscribe(user => {
+      
+
+      if(user){
+        const userObj:User = {
+          uid: user.uid,
+          email: user.email,
+          displayName: this.name,
+          photoURL:'',
+          admin:false
+        }
+      this.insertUser(userObj);
+      order.userId = user.uid;
+      this.insertOrder(order);
+      }
+
+    });
+
+    
+
+
     console.log(order.cart);
 
   }
-}
-   
-   
 
+   
+}
 
 
 
