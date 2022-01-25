@@ -30,4 +30,16 @@ export class OrderHttpService {
   });
 }
 
+updateOrdeStatus(order:Order){
+  return this.http.patch(`https://nest-commerce-api.herokuapp.com/orders/${order.id}`,{
+    
+    "orderStatus":order.orderStatus
+
+});
+
+}
+
+deleteOrder(orderId:number){
+  return this.http.delete(`https://nest-commerce-api.herokuapp.com/orders/${orderId}`);
+}
 }
