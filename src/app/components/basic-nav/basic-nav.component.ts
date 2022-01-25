@@ -5,6 +5,7 @@ import { User } from 'src/app/models/user';
 import { CartService } from 'src/app/services/cart.service';
 import { FirebaseService } from 'src/app/services/firebase.service';
 import { UrlParamsService } from 'src/app/services/url-params.service';
+import { UserHttpService } from 'src/app/services/user-http.service';
 import { AuthComponent } from '../auth/auth.component';
 import { CartComponent } from '../cart/cart.component';
 import { DepartmentsComponent } from '../departments/departments.component';
@@ -22,13 +23,18 @@ export class BasicNavComponent implements OnInit {
   count = new Subscription(); // subscription that updates the items variable and is destroyed on component destruction
   user: User | null = null;
   userId: string | null = null;
+  admin:boolean = false;
 
   constructor(
     private paramService: UrlParamsService,
     private cartService: CartService,
     private mDialog: MatDialog,
-    private firebaseService: FirebaseService
-  ) {}
+    private firebaseService: FirebaseService,
+    private uHttp: UserHttpService
+  ) {
+
+  }
+
 
   ngOnInit(): void {
     this.getCategory();
@@ -38,6 +44,8 @@ export class BasicNavComponent implements OnInit {
     });
     this.logStatus();
     this.currentUser();
+    this.adminStatus();
+    
   }
 
   openCart() {
@@ -88,7 +96,8 @@ export class BasicNavComponent implements OnInit {
     this.firebaseService.currentUser$.subscribe((userID) => {
       console.log(userID);
       this.userId = userID;
-      userID ? true : false;
+      userID ? this.uHttp.isAdmin(userID) : false;
+      
     });
   }
 
@@ -103,5 +112,12 @@ export class BasicNavComponent implements OnInit {
     //signs out the user
     this.firebaseService.signOut();
     /* this.user = null; */
+  }
+
+  adminStatus() {
+    
+    this.uHttp.admin$.subscribe(admin => {
+      this.admin = admin;
+    });
   }
 }

@@ -53,16 +53,16 @@ export class NavComponent implements OnInit {
    
 
   ngOnInit(): void {
-    this.getCategory();
-    this.items$ = this.cartService.getItems();
-    this.count = this.cartService.getItems().subscribe((items)=>{
+    this.getCategory(); //gets the category from the url to display in the header
+    this.items$ = this.cartService.getItems(); //updates the items inside the cart
+    this.count = this.cartService.getItems().subscribe((items)=>{ //displays number of elements in the cart
       this.items = items;
     })
     this.logStatus();
     this.currentUser();
   }
 
-  openCart(){
+  openCart(){ //opens the cart copmonent as a modal
     this.mDialog.open(CartComponent,{ 
       width: '400px',
       height: '600px',
@@ -70,7 +70,7 @@ export class NavComponent implements OnInit {
   });
   }
 
-  openHamburger() {
+  openHamburger() { //opens the departments component as a modal 
     // opens the hamburger menu
     this.mDialog.open(DepartmentsComponent, {
       width: '100vw',
@@ -79,7 +79,7 @@ export class NavComponent implements OnInit {
     });
   }
 
-  openLogin() {
+  openLogin() { //opens the login component as a modal
     // opens the login dialog
     this.mDialog.open(AuthComponent, {
       width: '400px',
@@ -91,7 +91,7 @@ export class NavComponent implements OnInit {
 
     
 
-  getCategory(){
+  getCategory(){ //captures the category from the url and this result is later used to set the categorySelected variable
     this.paramService.get().subscribe((params)=>{
       this.categorySelected = params
     })
@@ -102,17 +102,17 @@ export class NavComponent implements OnInit {
 
 
 
-  //following are the methods for animations
-  expander(){
+  
+  expander(){ //toggles a state change via the expand variable
    this.expand=!this.expand;
   }
 
-  ngOnDestroy(){
+  ngOnDestroy(){ //destroys the count subscription on destruction of the component
     this.count.unsubscribe();
   }
 
   logStatus() {
-    //checks if the user is logged in
+    //checks if the user is logged in by evaluating if a user ID exists
     this.firebaseService.currentUser$.subscribe((userID) => {
       console.log(userID);
       this.userId = userID;
@@ -121,17 +121,16 @@ export class NavComponent implements OnInit {
   }
 
   currentUser() {
-    //gets the current logged in user
+    //ssubscribes to the current user observable and sets the user variable to the current user
     this.firebaseService.user$.subscribe((user) => {
       this.user = user;
-      console.log(user?.photoURL)
     });
   }
 
   signOut() {
     //signs out the user
     this.firebaseService.signOut();
-    /* this.user = null; */
+    
   }
       
 
