@@ -18,7 +18,11 @@ export class CartService {
       ...product,
       quantity
     }
-    this.cart.push(cartProduct);
+    //if the cart contains the item added it will increase the quantity
+    this.cart.map(item => item.id).includes(cartProduct.id) ?this.addQuantity(cartProduct):this.cart.push(cartProduct);
+    
+   
+    //updates the cart observable
     this.itemsInCart.next(this.cart.length);
   }
 
