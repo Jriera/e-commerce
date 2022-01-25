@@ -1,37 +1,53 @@
-<div *ngFor="let order of userOrders">
+
+
+
+<div >
     <div class="card">
         <div class="card-header">
         <div class="row">
-            <div class="col-md-6">
-            <h5>Order ID: {{order.id}}</h5>
+            <div *ngIf="admin" class="span-1">
+            <h5>Actions</h5>
             </div>
-            <div class="col-md-6">
-            <h5>Order Date: {{order.orderDate}}</h5>
+            <div class="span-1">
+            <h5>Order ID</h5>
+            </div>
+            <div class="span-2">
+            <h5>Order Date:</h5>
+            </div>
+            <div class="span-2">
+            <h5>Order Total:</h5>
+            </div>
+            <div class="span-3" >
+            <h5>User Id:</h5>
+            </div>
+            <div class="span-1">
+            <h5>Order Status:</h5>
             </div>
         </div>
         </div>
-        <div class="card-body">
+        <div class="card-body" *ngFor="let order of userOrders">
         <div class="row">
-            <div class="col-md-6">
-            <h5>Order Status: {{order.orderStatus}}</h5>
+            <div *ngIf="admin" class="span-1">
+                <mat-icon [matMenuTriggerFor]="menu">more_vert</mat-icon>
+                <mat-menu #menu="matMenu" xPosition="before" yPosition="below">
+                    <button mat-menu-item (click)="deleteOrder(order)">Delete</button>
+                    <button mat-menu-item (click)="updateOrder(order)">Complete</button>
+                </mat-menu>
             </div>
-            <div class="col-md-6">
-            <h5>Order Total: {{order.totalPrice | currency:'EUR':'symbol-narrow'}}</h5>
+            <div class="span-1">
+            <h5>{{order.id}}</h5>
             </div>
-        </div>
-        <div class="cart">
-            <div class="col-md-12">
-            <h5>Order Items:</h5>
-            <div *ngFor="let item of order.cart">
-                <div class="cart-row">
-                <div class="col-md-6">
-                    <h5>Item Name: {{item.title}}</h5>
-                </div>
-                <div class="col-md-6">
-                    <h5>Item Price: {{item.price | currency:'EUR':'symbol-narrow'}}</h5>
-                </div>
-                </div>
+            <div class="span-2" >
+            <h5>{{order.orderDate}}</h5>
             </div>
+            <div class="span-2">
+            <h5>{{order.totalPrice | currency:'EUR':'symbol-narrow'}}</h5>
+            </div>
+            <div class="span-3" >
+            <h5>{{order.userId}}</h5>
+            </div>
+            <div class="span-1">
+            <h5 [ngClass]="[order.orderStatus]">{{order.orderStatus}}</h5>
             </div>
         </div>
         </div>
