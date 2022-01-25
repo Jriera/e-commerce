@@ -10,13 +10,15 @@ import { BehaviorSubject } from 'rxjs';
 
 //interface imports
 import { User } from '../models/user';
-import { Order } from '../models/order';
+
+import { UserHttpService } from './user-http.service';
+
 
 @Injectable({
   providedIn: 'root',
 })
 export class FirebaseService {
-  constructor(private ngfa: AngularFireAuth) {
+  constructor(private ngfa: AngularFireAuth,private uHttp:UserHttpService) {
     this.authStatusUpdate();
     this.redirectResult();
   }
@@ -29,7 +31,7 @@ export class FirebaseService {
   userSubject = new BehaviorSubject(this.currentUser);
   user$ = this.userSubject.asObservable(); //we create an observable that will be used to watch for changes in the current user
 
-  orders: Order[] | undefined = undefined;
+  
   authStatusUpdate() {
     //this function is used to update the login status of the user and is called in the service constructor
     this.ngfa.onAuthStateChanged((user) => {
@@ -72,6 +74,7 @@ export class FirebaseService {
         email,
         password
       );
+      
       console.log(res);
       return res;
     } catch (err) {
@@ -88,18 +91,6 @@ export class FirebaseService {
         password
       );
       const user = userCredential.user;
-      if (user) {
-        const fsUser: User = {
-          uid: user.uid,
-          email: user.email,
-          photoURL: user.photoURL,
-          displayName: user.displayName,
-          myCustomData: '',
-          admin: false,
-          isAnonymous: false,
-          phoneNumber: '',
-        };
-      }
       console.log(user);
       return user;
     } catch (err) {
