@@ -1,21 +1,61 @@
+:host{
+    @apply font-body
+}
 .card{
     @apply mx-32 border-2 border-neutral-200 rounded-lg shadow-lg mt-12;
     .card-header{
         @apply px-6 py-4 bg-neutral-200 text-neutral-600 font-bold;
         .row{
-            @apply flex justify-between;
+            @apply grid grid-cols-10 text-center text-sm;
+
+            .span-1{
+                @apply col-span-1;
+            }
+            .span-2{
+                @apply col-span-2;
+            }
+            .span-3{
+                @apply col-span-3;
+            }
+            
         }
 
     }
 
     .card-body{
-        @apply px-6 py-4 ;
+        @apply px-6 py-4 border-b-2 border-b-neutral-200;
         .row{
-            @apply flex justify-between border-b-2 border-b-neutral-200;
+            @apply grid grid-cols-10   text-center items-center text-xs p-0;
             div{
-                @apply h-auto pb-4
+                @apply h-auto pb-0 
+            }
+
+            .span-1{
+                @apply col-span-1;
+            }
+            .span-2{
+                @apply col-span-2;
+            }
+            .span-3{
+                @apply col-span-3;
             }
         }
+    }
+
+    .pending{
+        @apply text-amber-600 font-bold;
+    }
+
+    .Completed{
+        @apply text-green-600 font-bold;
+    }
+
+    .Cancelled{
+        @apply text-red-600 font-bold;
+    }
+
+    mat-icon{
+        @apply cursor-pointer;
     }
     
 }
