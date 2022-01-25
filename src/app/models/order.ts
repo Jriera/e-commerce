@@ -6,6 +6,6 @@ export interface Order{
     cart: Product[];
     totalPrice: number;
     orderDate: Date;
-    userId: string | null;
+    userId: string | null | undefined;
     orderStatus: string;
 }
