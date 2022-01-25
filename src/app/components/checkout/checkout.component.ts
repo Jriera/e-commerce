@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { FormBuilder,FormGroup,Validators } from '@angular/forms';
-import { creditCardValidator } from '../../directives/credit-card-validator.directive';
+import { FormBuilder,Validators } from '@angular/forms';
+
+
 
 
 
@@ -14,6 +15,10 @@ export class CheckoutComponent implements OnInit {
   
   
   formValidity = 'false';
+  email:string = '';
+  password:string = '';
+  name:string = '';
+ 
 
   constructor( 
     private activatedRoute:ActivatedRoute,
@@ -51,7 +56,15 @@ export class CheckoutComponent implements OnInit {
   isValid(){
     this.checkoutForm.statusChanges.subscribe(status => {
       this.formValidity = status ;
+      this.email = this.checkoutForm.value.email;
+      this.password = this.checkoutForm.value.password;
+      this.name = this.checkoutForm.value.name;
+      
+
+      console.log(this.email);
+      console.log(this.password);
     });
+
 
   }
 
