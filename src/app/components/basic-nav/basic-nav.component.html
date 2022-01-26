@@ -18,7 +18,7 @@
 
                 <p><span> {{user.displayName ?? user.email}}</span></p>
                 <div class="profile">
-                    <img src="{{user.photoURL}}" onerror="this.src='/assets/icon/user_pic.png'" alt="" referrerpolicy="no-referrer">
+                    <img src="{{user.photoURL}}" onerror="this.src='assets/icons/user_pic.png'" alt="" referrerpolicy="no-referrer">
                     
                     <mat-menu #menu="matMenu" xPosition="before">
                         <button mat-menu-item routerLink="/profile">Profile</button>
