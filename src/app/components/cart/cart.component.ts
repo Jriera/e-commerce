@@ -117,8 +117,8 @@ export class CartComponent implements OnInit {
     }
     
     
+   this.fbService.currentUserUID?null:this.fbService.emailSignUp(this.email,this.password);
     
-    this.fbService.emailSignUp(this.email,this.password);
     
 
     this.fbService.user$.subscribe(user => {
